@@ -13,7 +13,6 @@ function previewFile() {
         contingut=reader.result
         content.innerText = contingut ;
         procesa_csv(contingut)
-        
         },
         false
     );
@@ -57,6 +56,12 @@ function extreuretaula(){
    
 }
 //dibuxa una taula amb els alumnes de la classe demanda anteriorment
+
+function alerta(text){
+    alert(text)
+    document.getElementById("taula").innerHTML=" "
+}
+
 function procesa_taula(dades){
 
     if(document.getElementById("taula")){
@@ -104,6 +109,8 @@ function procesa_taula(dades){
             console.log(this.getAttribute("id"))
             let IDEN=this.getAttribute("id")
             $.getJSON("../servidor/consultes/gestioalumnes.php",{"classe":document.querySelector(".Classes").value,"id":IDEN},procesa_taula)
+            
+
         })
         marc.innerHTML="Elimina"
         TD.append(marc)       
@@ -111,7 +118,7 @@ function procesa_taula(dades){
       
         
     })
-    //formulari per donar l'alta a un alumne casa 
+    //formulari per donar l'alta a un alumne 
     TR=document.createElement("tr")
     TH=document.createElement("td")
 
@@ -152,15 +159,13 @@ function procesa_taula(dades){
     entrada=document.createElement("button")
     entrada.innerHTML="Afexeix alumne"
     entrada.addEventListener("click",function(){
-        
-        // console.log(document.querySelector(".Classes").value)
         $.get("../servidor/consultes/gestioalumnes.php",{
             "classe":document.querySelector(".Classes").value,
             "num":document.querySelectorAll("input")[0].value,
             "nom":document.querySelectorAll("input")[1].value,
             "primer":document.querySelectorAll("input")[2].value,
             "segon":document.querySelectorAll("input")[3].value,
-        },procesa_taula)        
+        },alerta("alumne afexit corectament"))        
     })
     Td.append(entrada)
     TR.append(Td)
@@ -168,9 +173,7 @@ function procesa_taula(dades){
 
 
     //actualiuzem la tabla amb els valors adecuats
-   
-    document.getElementById("taula").append(tabla)
-    
 
+    document.getElementById("taula").append(tabla)
 }
 

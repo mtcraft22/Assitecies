@@ -29,7 +29,7 @@
     $sqlQuery = $databaseConnection->prepare($agregarAssistencia);
     $sqlQuery->execute();
 
-    $Select = "SELECT * FROM $opcionSeleccionada ORDER BY ";
+    $Select = "SELECT * FROM $opcionSeleccionada ORDER BY 'Num' ";
     $sqlQuery = $databaseConnection->prepare($Select);
     $sqlQuery->execute();
 

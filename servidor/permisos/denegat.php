@@ -7,7 +7,7 @@
     <title>Denegat</title>
 </head>
 <body>
-    <h1>has acedit a una zona que requereix permisos superiors</h1>
+    <h1>has intetat acedit a una zona que requereix permisos superiors</h1>
     <a href="../login/tanca.php"><button>Enregistrat com un usuari superior</button></a>
 </body>
 </html>
