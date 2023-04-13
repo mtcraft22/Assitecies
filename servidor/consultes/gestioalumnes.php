@@ -46,6 +46,7 @@
 
     }    
     try{
+     
         //eliminem dades dels alumnes actuals eliminan els registre de la taula actual
         $databaseConnection = new PDO('mysql:host='._HOST_NAME_.';dbname='._DATABASE_NAME_, _USER_NAME_, _DB_PASSWORD,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
         if ($llistat !=false and $classe !=false){

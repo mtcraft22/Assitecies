@@ -1,4 +1,4 @@
-let llista = document.getElementById("Llistat").files
+// let llista = document.getElementById("Llistat").files
 let fs= new FileReader()
 let contingut=null
 function previewFile() {
@@ -18,7 +18,7 @@ function previewFile() {
     );
 
     if (file) {
-        //llegim com un text el archiu introduit en el archiu
+        //llegim com un text am b codificació per els caràcters latinss el archiu introduit en el archiu
         reader.readAsText(file,"ISO-8859-1");
     }
     }
