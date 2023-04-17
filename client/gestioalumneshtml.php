@@ -16,7 +16,7 @@ if(!isset($_SESSION["usuari"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador d'alumnes</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
+    <script src="gestioalumnes.js" ></script>
     <link rel="stylesheet" href="../estils/gestioalumne.css">
 </head>
 <body id="cuerpo">
@@ -83,6 +83,6 @@ if(!isset($_SESSION["usuari"])){
     </div>
     <button onclick="show('block')">Actualiza</button>
     <p id="vamooss"></p>
-    <script src="gestioalumnes.js"></script>
+    
 </body>
 </html>

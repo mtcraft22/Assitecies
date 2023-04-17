@@ -1,10 +1,10 @@
 
 export class crud{
-    constructor(php,Parent_node){
+    
+    
+    constructor(php){
         this.php=php
-        this.Parent_node=Parent_node
-        this.Parent_node.setAttribute("id","contingut")
-        
+        this.tr=null
     }
     
     envia(info,method) {
@@ -18,11 +18,22 @@ export class crud{
         }
     }
     renderizar(data){
-        
-        Object.keys(data).forEach(function(key){
-            $("#contingut").append("<tr><th>"+data+" :"+"</th><th>"+data[key]+"</th></tr>")
+        $("body").append("<table id='alumnes'></table>")
+        this.tr=document.createElement("tr")
+        $(alumnes).append(this.tr)
+        Object.keys(data[0]).forEach(key=>{
+            $(this.tr).append("<td>"+key+"</tr>")
+            
         })
-        document.getElementById("contingut").append(this.Table)
+        data.forEach(element => {
+            
+            this.tr=document.createElement("tr")
+            $(alumnes).append(this.tr)
+            Object.keys(element).forEach(key=>{
+                $(this.tr).append("<td>"+element[key]+"</tr>")
+            })           
+        });
+        
     }
 }
 
