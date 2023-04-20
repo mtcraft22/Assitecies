@@ -8,9 +8,11 @@ class crudgestalum extends crud{
         let taula=document.getElementById("taula")
         let trs=taula.querySelectorAll("tr")
         for (let e of trs){
-            for (let ch of e.querySelectorAll("td")){
-                console.log(ch.textContent)
-            }
+            let td = document.createElement("td")
+            let but = document.createElement("button")
+            but.innerHTML="envia"
+            td.append(but)
+            e.append(td)
         }
     }
 }
@@ -40,7 +42,7 @@ function show(mode){
     document.getElementById("Antecio").style.display=mode
 }
 function procesa_csv(cont){
-    show("none")
+    show("none")  
     let array_linias=cont.split("\r\n")
     var array_final=[]
     let json_string
