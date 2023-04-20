@@ -1,39 +1,42 @@
-
-export class crud{
-    
-    
-    constructor(php){
+class crud{
+    constructor(php,arrel="body"){
         this.php=php
+        this.arrel=arrel
         this.tr=null
+
     }
-    
-    envia(info,method) {
-        console.log(this.php)
+    envia(info,method,obj) {
         if (method=="get"){
             $.get(this.php,info)
         }else if (method=="post"){
             $.post(this.php,info)
         }else if (method=="getjson"){
-            $.getJSON(this.php,info,this.renderizar)
+            $.getJSON(this.php,info,function(data){obj.renderizar(data,obj)})
+            
+        
         }
     }
-    renderizar(data){
-        $("body").append("<table id='alumnes'></table>")
-        this.tr=document.createElement("tr")
-        $(alumnes).append(this.tr)
+
+    renderizar(data,obj){
+        if (document.getElementById("alumnes")){$("#alumnes").remove()}
+        $(obj.arrel).append("<table id='alumnes'></table>")
+        obj.tr=document.createElement("tr")
+        $("#alumnes").append(obj.tr)
         Object.keys(data[0]).forEach(key=>{
-            $(this.tr).append("<td>"+key+"</tr>")
-            
+            $(obj.tr).append("<td>"+key+"</tr>")
         })
         data.forEach(element => {
-            
-            this.tr=document.createElement("tr")
-            $(alumnes).append(this.tr)
+            obj.tr=document.createElement("tr")
+            $("#alumnes").append(obj.tr)
             Object.keys(element).forEach(key=>{
-                $(this.tr).append("<td>"+element[key]+"</tr>")
+                if (element[key]==null){
+                    $(obj.tr).append("<td></tr>")
+                }else{
+                    $(obj.tr).append("<td>"+element[key]+"</tr>")
+                }
+               
             })           
         });
-        
     }
 }
 
