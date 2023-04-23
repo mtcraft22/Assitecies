@@ -1,6 +1,6 @@
 <?php
 define('_HOST_NAME_', 'localhost');
 define('_DATABASE_NAME_', 'assistencies');
-define('_USER_NAME_', 'DavidDíaz');
-define('_DB_PASSWORD', '02coordTAC');
+define('_USER_NAME_', 'root');
+define('_DB_PASSWORD', '');
 ?>
