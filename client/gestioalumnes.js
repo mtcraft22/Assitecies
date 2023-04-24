@@ -10,16 +10,22 @@ class crudgestalum extends crud{
         for (let i=0;i<trs.length-1; i++ ){
             let td = document.createElement("td")
             let but = document.createElement("button")
-            but.innerHTML="envia"
+            but.innerHTML="eliminar"
             but.addEventListener("click",function(){obj.envia({"classe":document.querySelector(".Classes").value,"id":trs[i+1].children[0].innerHTML},"getjson",obj)})
             td.append(but)
             trs[i+1].append(td)
         }
         let trinputs = document.createElement("tr")
-        taula.append(trinputs)
-        for (let e of trs.children){
-            console.log(e)
+        
+        for (let e of trs[0].children){
+            let input = document.createElement("input")
+            input.setAttribute("type","input")
+            input.setAttribute("id",e.textContent)
+            let td = document.createElement("td")
+            td.append(input)
+            trinputs.append(td)
         }
+        taula.querySelector("table").append(trinputs)
     }      
 }
 // let llista = document.getElementById("Llistat").files
