@@ -3,28 +3,54 @@ class crudgestalum extends crud{
     constructor(php,parent){
         super(php,parent)
     }
+    envia(info,method,obj){super.envia(info,method,obj)}
     renderizar(data,obj){
-        super.renderizar(data,obj)
+        console.log(typeof(obj))
+        alert("rededizare el xcrudalumn no lose es leguaje fjfgbouaieroijbneragnoiadsfgbi<hopdfz<klfbfi<")
         let taula=document.getElementById("taula")
-        let trs=taula.querySelectorAll("tr")
-        for (let i=0;i<trs.length-1; i++ ){
-            let td = document.createElement("td")
-            let but = document.createElement("button")
-            but.innerHTML="eliminar"
-            but.addEventListener("click",function(){obj.envia({"classe":document.querySelector(".Classes").value,"id":trs[i+1].children[0].innerHTML},"getjson",obj)})
-            td.append(but)
-            trs[i+1].append(td)
-        }
-        let trinputs = document.createElement("tr")
+        if (obj){
+            super.renderizar(data,obj)
         
-        for (let e of trs[0].children){
-            let input = document.createElement("input")
-            input.setAttribute("type","input")
-            input.setAttribute("id",e.textContent)
-            let td = document.createElement("td")
-            td.append(input)
-            trinputs.append(td)
+            let trs=taula.querySelectorAll("tr")
+            for (let i=0;i<trs.length-1; i++ ){
+                let td = document.createElement("td")
+                let but = document.createElement("button")
+                but.innerHTML="eliminar"
+                but.addEventListener("click",function(){obj.envia({"classe":document.querySelector(".Classes").value,"id":trs[i+1].children[0].innerHTML},"getjson",obj)})
+                td.append(but)
+                trs[i+1].append(td)
+            }
+            let trinputs = document.createElement("tr")
+            
+            for (let e of trs[0].children){
+                let input = document.createElement("input")
+                input.setAttribute("type","input")
+                input.setAttribute("id",e.textContent)
+                let td = document.createElement("td")
+                td.append(input)
+                trinputs.append(td)
+            }
+            let butenvia = document.createElement("button")
+            butenvia.innerHTML="Afexeix l'alumne"
+            butenvia.addEventListener("click",function(){
+                obj.envia
+                        (
+                            {
+                            "classe":document.querySelector(".Classes").value,
+                            "num":document.getElementById("Num").value,
+                            "nom":document.getElementById("Nom").value,
+                            "primer":document.getElementById("Primer_Cognom").value,
+                            "segon":document.getElementById("Segon_Cognom").value,
+                            },
+                                "getjson",
+                                obj
+                        )
+            })
         }
+        
+        let td = document.createElement("td")
+        td.append(butenvia)
+        trinputs.append(td)
         taula.querySelector("table").append(trinputs)
     }      
 }
