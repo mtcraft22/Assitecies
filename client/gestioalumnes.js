@@ -1,3 +1,8 @@
+//Aquest archiu js te com a funció administrar tot lo relacionat amb l'alta y baixa dels alumnes de l'escola/institut
+//Les pricipals funcions son  mostrar el alumnes , eliminar , tots els alumnes de una classe de cop a partir de un fitxer csv
+
+
+
 let llista = document.getElementById("Llistat").files
 let fs= new FileReader()
 let contingut=null
@@ -49,28 +54,23 @@ function envia(array){
 })
 }
 
-//peticio al servidor d3els registres de una determinada classe
+//petició al servidor d3els registres de una determinada classe
 function extreuretaula(){
     
     $.getJSON("../servidor/consultes/gestioalumnes.php",{"classe":document.querySelector(".Classes").value,"extreure":true},procesa_taula)
    
 }
-//dibuxa una taula amb els alumnes de la classe demanda anteriorment
-
-function alerta(text){
-    alert(text)
-    document.getElementById("taula").innerHTML=" "
-}
-
+//dibuxem la taula amb els alumnes de una derteminada classe retoornats pel servidor 
 function procesa_taula(dades){
 
-    if(document.getElementById("taula")){
+    if(document.getElementById("taula")){ //si extieix la taula la eliminem ja que esta desactualizada
         document.getElementById("taula").innerHTML=" "
     }
     
-    let tabla=document.createElement("table")
-    let TR=document.createElement("tr")
-    let TH=document.createElement("th")
+    let tabla=document.createElement("table")//creem una nova taula 
+    let TR=document.createElement("tr")//creem una fila
+    let TH=document.createElement("th")//creem una columna
+    //afexim la fila amb el nom de les dades a mostrar 
     TH.innerHTML="Num"
     TR.append(TH)
     TH=document.createElement("th")
@@ -83,7 +83,9 @@ function procesa_taula(dades){
     TH.innerHTML="Segon_cognom"
     TR.append(TH)
     tabla.append(TR)
+    //iterem les dades retornades pel servidor
     dades.forEach(function(ele){
+        //creem una fila amb les seves columnes per mostrar les dades dels alumnes
         let TR=document.createElement("tr")
         let TD=document.createElement("td")
         TD.innerHTML=ele.Num
@@ -102,6 +104,7 @@ function procesa_taula(dades){
         TR.append(TD)
         TD=document.createElement("td")
         TR.append(TD)
+        // creeem un butó per eliminar els alumnes
         let marc=document.createElement("button")
         marc.setAttribute("id",ele.Num)
         marc.addEventListener("click",function(){
@@ -109,7 +112,7 @@ function procesa_taula(dades){
             console.log(this.getAttribute("id"))
             let IDEN=this.getAttribute("id")
             $.getJSON("../servidor/consultes/gestioalumnes.php",{"classe":document.querySelector(".Classes").value,"id":IDEN},procesa_taula)
-            
+    
 
         })
         marc.innerHTML="Elimina"
@@ -159,13 +162,14 @@ function procesa_taula(dades){
     entrada=document.createElement("button")
     entrada.innerHTML="Afexeix alumne"
     entrada.addEventListener("click",function(){
-        $.get("../servidor/consultes/gestioalumnes.php",{
+        if(document.querySelectorAll("input")[3].value=="" ||document.querySelectorAll("input")[3].value==null){document.querySelectorAll("input")[3].value="\0"}
+        $.getJSON("../servidor/consultes/gestioalumnes.php",{
             "classe":document.querySelector(".Classes").value,
             "num":document.querySelectorAll("input")[0].value,
             "nom":document.querySelectorAll("input")[1].value,
             "primer":document.querySelectorAll("input")[2].value,
             "segon":document.querySelectorAll("input")[3].value,
-        },alerta("alumne afexit corectament"))        
+        },procesa_taula)        
     })
     Td.append(entrada)
     TR.append(Td)
