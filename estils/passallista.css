@@ -1,0 +1,29 @@
+*{
+    font-family: Calibri;
+}
+body{
+    background-color: rgb(253, 176, 140);
+}
+
+#opcions p {
+    margin-top: -15px;
+    padding: 3px;
+}
+#opcions p:hover{
+    background-color: coral; 
+    cursor: pointer;
+}
+table{
+    border-radius: 5px;
+    border: 2px solid black;
+    background-color: rgb(111, 230, 220);
+    color: rgb(0, 0, 0);
+}
+table td{
+    border: 1px solid black;
+    
+    background-color: rgb(224, 245, 168);
+}
+table tr{
+    border: 2px solid black;
+}
