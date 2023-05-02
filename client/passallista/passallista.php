@@ -49,7 +49,7 @@
             <option value="6eA">6eA</option>
             <option value="6eB">6eB</option>
     </select><br><br>
-    
+    <div id="taula-contenidor"></div>
     <script src="passallista.js"></script>
     <button onclick="peticio_lista()">Passa llista</button>
 </body>
