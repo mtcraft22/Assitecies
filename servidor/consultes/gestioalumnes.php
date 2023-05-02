@@ -68,10 +68,20 @@
             $sql ="DELETE FROM $classe WHERE Num='$id' ";
             $resultat=$databaseConnection->prepare($sql);
             $resultat->execute();
+            $sql="SELECT Num,Nom,Primer_Cognom,Segon_Cognom FROM $classe WHERE 1";
+            $resultat=$databaseConnection->prepare($sql);
+            $resultat->execute();
+            $taula=$resultat->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode($taula);
         }elseif($classe !=false and $segon!=false){        
             $sql="INSERT INTO $classe (Num,Nom,Primer_Cognom,Segon_Cognom) values ('$num','$nom','$primer','$segon')";
             $resultat=$databaseConnection->prepare($sql);
             $resultat->execute();
+            $sql="SELECT Num,Nom,Primer_Cognom,Segon_Cognom FROM $classe WHERE 1";
+            $resultat=$databaseConnection->prepare($sql);
+            $resultat->execute();
+            $taula=$resultat->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode($taula);
            
             
         }            
