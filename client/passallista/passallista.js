@@ -20,7 +20,7 @@ function procesa_taula(dades){
     dades.forEach(function(item){
         let tr = document.createElement("tr")
         Object.values(item).forEach(function(itemele){
-            let td = document.createElement("td")
+            var td = document.createElement("td")
             td.innerHTML=itemele
             tr.append(td)
             let alunum =td.parentNode.querySelectorAll("td")[0].textContent         

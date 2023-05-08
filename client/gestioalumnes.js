@@ -1,11 +1,8 @@
 //Aquest archiu js te com a funció administrar tot lo relacionat amb l'alta y baixa dels alumnes de l'escola/institut
 //Les pricipals funcions son  mostrar el alumnes , eliminar , tots els alumnes de una classe de cop a partir de un fitxer csv
-
-
-
-let llista = document.getElementById("Llistat").files
+//let llista = document.getElementById("Llistat").files
 let fs= new FileReader()
-let contingut=null
+var contingut=null
 function previewFile() {
     const content = document.querySelector("#vamooss");
     const [file] = document.querySelector("input[type=file]").files;
@@ -50,7 +47,7 @@ function resposta(dades){
 function envia(array){
     console.log(array.pop())
     $(document).ready(function(){
-    $.get("../servidor/consultes/gestioalumnes.php",{"llista":array,"classe":document.querySelector(".Classes").value},resposta)
+    $.get("../servidor/consultes/gestioalumnes.php",{"llista":array,"classe":document.querySelector(".classeactualiza").value},resposta)
 })
 }
 

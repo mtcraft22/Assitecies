@@ -55,7 +55,7 @@ if(!isset($_SESSION["usuari"])){
         <label>Fitxer en format CSV: </label>
         <input type="file" name="Llistat" id="Llistat" required><br>
         <label>Classe a actualizar:</label>
-        <select name="Classe" class="Classes"  required>
+        <select name="classeactualiza" class="classeactualiza"  required>
             <option value="I3A">I3A</option>
             <option value="I3B">I3B</option>
             <option value="I4A">I4A</option>
