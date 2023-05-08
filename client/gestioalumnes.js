@@ -10,18 +10,20 @@ function previewFile() {
     const content = document.querySelector("#vamooss");
     const [file] = document.querySelector("input[type=file]").files;
     const reader = new FileReader();
+
     reader.addEventListener(    
         "load",
         () => {
         // reader.result retorna el que ha legit del archiu
         contingut=reader.result
         content.innerText = contingut ;
-        procesa_csv(contingut)   
+        procesa_csv(contingut)
         },
         false
     );
+
     if (file) {
-        //llegim com un text amb codificació per els caràcters latinss el archiu introduit en el archiu
+        //llegim com un text el archiu introduit en el archiu
         reader.readAsText(file,"ISO-8859-1");
     }
     }
@@ -29,7 +31,7 @@ function show(mode){
     document.getElementById("Antecio").style.display=mode
 }
 function procesa_csv(cont){
-    show("none")  
+    show("none")
     let array_linias=cont.split("\r\n")
     var array_final=[]
     let json_string
@@ -48,27 +50,16 @@ function resposta(dades){
 function envia(array){
     console.log(array.pop())
     $(document).ready(function(){
-    $.get("../servidor/consultes/gestioalumnes.php",{"llista":array,"classe":document.querySelector(".Classes").value})
+    $.get("../servidor/consultes/gestioalumnes.php",{"llista":array,"classe":document.querySelector(".Classes").value},resposta)
 })
 }
 
-
-//peticio al servidor dels registres de una determinada classe
-let procesament= new crudgestalum("../servidor/consultes/gestioalumnes.php","#taula")
-
 //petició al servidor d3els registres de una determinada classe
-
 function extreuretaula(){
-    procesament.envia({"classe":document.querySelector(".Classes").value,"extreure":true},"getjson",procesament)
+    
+    $.getJSON("../servidor/consultes/gestioalumnes.php",{"classe":document.querySelector(".Classes").value,"extreure":true},procesa_taula)
+   
 }
-
-//dibuxa una taula amb els alumnes de la classe demanda anteriorment
-function alerta(text){
-    alert(text)
-    document.getElementById("taula").innerHTML=" "
-}
-
-
 //dibuxem la taula amb els alumnes de una derteminada classe retoornats pel servidor 
 function procesa_taula(dades){
 
@@ -189,5 +180,3 @@ function procesa_taula(dades){
 
     document.getElementById("taula").append(tabla)
 }
-
-
