@@ -9,8 +9,6 @@ if(!isset($_SESSION["usuari"])){
 }
 ?>
 
-<<<<<<< HEAD
-=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,4 +88,3 @@ if(!isset($_SESSION["usuari"])){
     <a href="./../servidor/inici/Assistenciesinici.php"><button>Torna a la pagina pricipal</button></a>
 </body>
 </html>
->>>>>>> nou

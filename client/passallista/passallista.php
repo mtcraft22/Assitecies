@@ -17,15 +17,16 @@
 </head>
 <body>
    
-    <div id="opcions">
-        <p>RetardMati</p>
-        <p>RetardMatiJustificat</p>    
-        <p>RetardTardaJustificat</p>    
-        <p>AbsenciaMati</p>     
-        <p>AbsenciaTarda</p> 
-        <p>AbsenciaTotalJustificat</p>
-        <p>AbsenciaMatiJustificat</p>   
-        <p>AbsenciaTardaJustificat</p>  
+    <div id="opcions" onclick="">
+        <p onclick="setinci('Ha vingut')">Ha vingut</p>
+        <p onclick="setinci('RetardMati')">RetardMati</p>
+        <p onclick="setinci('RetardMatiJustificat')">RetardMatiJustificat</p>    
+        <p onclick="setinci('RetardTardaJustificat')">RetardTardaJustificat</p>    
+        <p onclick="setinci('AbsenciaMati')">AbsenciaMati</p>     
+        <p onclick="setinci('AbsenciaTarda')">AbsenciaTarda</p> 
+        <p onclick="setinci('AbsenciaTotalJustificat')">AbsenciaTotalJustificat</p>
+        <p onclick="setinci('AbsenciaMatiJustificat')">AbsenciaMatiJustificat</p>   
+        <p onclick="setinci('AbsenciaTardaJustificat')">AbsenciaTardaJustificat</p>  
     </div>
     <select id="Classes" required>
             <option value="---"></option>

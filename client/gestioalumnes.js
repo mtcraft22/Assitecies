@@ -1,69 +1,9 @@
-<<<<<<< HEAD
-//import {crud}  from './../CRUD/crud.js'
-class crudgestalum extends crud{
-    constructor(php,parent){
-        super(php,parent)
-    }
-    envia(info,method,obj){super.envia(info,method,obj)}
-    renderizar(data,obj){
-        console.log(typeof(obj))
-        alert("rededizare el xcrudalumn no lose es leguaje fjfgbouaieroijbneragnoiadsfgbi<hopdfz<klfbfi<")
-        let taula=document.getElementById("taula")
-        if (obj){
-            super.renderizar(data,obj)
-        
-            let trs=taula.querySelectorAll("tr")
-            for (let i=0;i<trs.length-1; i++ ){
-                let td = document.createElement("td")
-                let but = document.createElement("button")
-                but.innerHTML="eliminar"
-                but.addEventListener("click",function(){obj.envia({"classe":document.querySelector(".Classes").value,"id":trs[i+1].children[0].innerHTML},"getjson",obj)})
-                td.append(but)
-                trs[i+1].append(td)
-            }
-            let trinputs = document.createElement("tr")
-            
-            for (let e of trs[0].children){
-                let input = document.createElement("input")
-                input.setAttribute("type","input")
-                input.setAttribute("id",e.textContent)
-                let td = document.createElement("td")
-                td.append(input)
-                trinputs.append(td)
-            }
-            let butenvia = document.createElement("button")
-            butenvia.innerHTML="Afexeix l'alumne"
-            butenvia.addEventListener("click",function(){
-                obj.envia
-                        (
-                            {
-                            "classe":document.querySelector(".Classes").value,
-                            "num":document.getElementById("Num").value,
-                            "nom":document.getElementById("Nom").value,
-                            "primer":document.getElementById("Primer_Cognom").value,
-                            "segon":document.getElementById("Segon_Cognom").value,
-                            },
-                                "getjson",
-                                obj
-                        )
-            })
-        }
-        
-        let td = document.createElement("td")
-        td.append(butenvia)
-        trinputs.append(td)
-        taula.querySelector("table").append(trinputs)
-    }      
-}
-// let llista = document.getElementById("Llistat").files
-=======
 //Aquest archiu js te com a funció administrar tot lo relacionat amb l'alta y baixa dels alumnes de l'escola/institut
 //Les pricipals funcions son  mostrar el alumnes , eliminar , tots els alumnes de una classe de cop a partir de un fitxer csv
 
 
 
 let llista = document.getElementById("Llistat").files
->>>>>>> nou
 let fs= new FileReader()
 let contingut=null
 function previewFile() {
@@ -112,23 +52,23 @@ function envia(array){
 })
 }
 
-<<<<<<< HEAD
+
 //peticio al servidor dels registres de una determinada classe
 let procesament= new crudgestalum("../servidor/consultes/gestioalumnes.php","#taula")
-=======
+
 //petició al servidor d3els registres de una determinada classe
->>>>>>> nou
+
 function extreuretaula(){
     procesament.envia({"classe":document.querySelector(".Classes").value,"extreure":true},"getjson",procesament)
 }
-<<<<<<< HEAD
+
 //dibuxa una taula amb els alumnes de la classe demanda anteriorment
 function alerta(text){
     alert(text)
     document.getElementById("taula").innerHTML=" "
 }
 
-=======
+
 //dibuxem la taula amb els alumnes de una derteminada classe retoornats pel servidor 
 function procesa_taula(dades){
 
@@ -249,5 +189,5 @@ function procesa_taula(dades){
 
     document.getElementById("taula").append(tabla)
 }
->>>>>>> nou
+
 

@@ -5,7 +5,11 @@
     }else{
         $Extr=$_GET["extreure"];
     }
-
+    if (!isset($_GET["data"])){
+        $data=false;
+    }else{
+        $data=$_GET["data"];
+    }
     if (!isset($_GET["Tipus_Assistencia"])){
         $Tipus=false;
     }else{
@@ -31,10 +35,11 @@
     
 
     if ($Tipus){
-        $agregarAssistencia = "UPDATE `$Classe` SET `$hoy` = '$Tipus' WHERE `Num` = '$Num'";
+        $agregarAssistencia = "UPDATE `$Classe` SET `$data` = '$Tipus' WHERE `Num` = '$Num'";
         $sqlQuery = $databaseConnection->prepare($agregarAssistencia);
         $sqlQuery->execute();
-    }elseif($Extr){
+    }
+    if($Extr){
         $Select = "SELECT * FROM $Classe ORDER BY 'Num' ";
         $sqlQuery = $databaseConnection->prepare($Select);
         $sqlQuery->execute();
