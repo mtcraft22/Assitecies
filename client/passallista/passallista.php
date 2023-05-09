@@ -52,6 +52,7 @@
     </select><br><br>
     <div id="taula-contenidor"></div>
     <script src="passallista.js"></script>
-    <button onclick="peticio_lista()">Passa llista</button>
+    <button onclick="peticio_lista()">Passa llista</button><br>
+    <a href="../../servidor/inici/Assistenciesinici.php"><button>Desa y torma al inici</button></a>
 </body>
 </html>

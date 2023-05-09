@@ -4,16 +4,16 @@
 let fs= new FileReader()
 var contingut=null
 function previewFile() {
-    const content = document.querySelector("#vamooss");
-    const [file] = document.querySelector("input[type=file]").files;
-    const reader = new FileReader();
+    const content = document.querySelector("#vamooss")
+    const [file] = document.querySelector("input[type=file]").files
+    const reader = new FileReader()
 
     reader.addEventListener(    
         "load",
         () => {
         // reader.result retorna el que ha legit del archiu
         contingut=reader.result
-        content.innerText = contingut ;
+        content.innerText = contingut 
         procesa_csv(contingut)
         },
         false
@@ -64,7 +64,8 @@ function procesa_taula(dades){
         document.getElementById("taula").innerHTML=" "
     }
     
-    let tabla=document.createElement("table")//creem una nova taula 
+    let tabla=document.createElement("table")//creem una nova taula
+    tabla.setAttribute("id","llistaalum")
     let TR=document.createElement("tr")//creem una fila
     let TH=document.createElement("th")//creem una columna
     //afexim la fila amb el nom de les dades a mostrar 

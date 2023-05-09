@@ -30,3 +30,10 @@ table td{
 table tr{
     border: 2px solid black;
 }
+
+#taula tr:hover td{
+    cursor: pointer;
+    background-color: rgb(240, 119, 6);
+}
+#taula td:hover{
+    font-weight: bold;
