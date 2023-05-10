@@ -83,6 +83,6 @@ if(!isset($_SESSION["usuari"])){
     <button onclick="show('block')">Actualiza</button>
     <p id="vamooss"></p>
     <script src="gestioalumnes.js"></script>
-    <a href="./../servidor/inici/Assistenciesinici.php"><button>Torna a la pagina pricipal</button></a>
+    <a href="./../servidor/inici/Assistenciesinici.php"><button>Dessa i  Torna al inici </button></a>
 </body>
 </html>

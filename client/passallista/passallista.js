@@ -31,10 +31,10 @@ function procesa_taula(dades){
                 var count = childNodes.length;
                 var child_index;
                 for (let i = 0; i < count; ++i) {
-                if (child === childNodes[i]) {
-                    child_index = i;
-                    break;
-                }
+                    if (child === childNodes[i]) {
+                        child_index = i;
+                        break;
+                    }
                 }
                 let date = taula.querySelector("tr").querySelectorAll("td")[child_index].textContent
                 if (child_index<4){date=undefined}
@@ -67,11 +67,8 @@ function conf_inicidencia(e,numalup,datap){
     }
 
 }
-//mostrem lista de tipus de incidecies en las posiion del ratoli bquan es fa click
-// document.getElementById("taula").addEventListener("click",function(e){
-//     incidecies.style.display='inline'
-//     incidecies.style.top=e.clientY +"px"
-//     incidecies.style.left=e.clientX +"px"
-
-
-// })
+document.addEventListener("keydown",function(e){
+    if(e.key === "Escape") {
+        incidecies.style.display='none'
+    } 
+})

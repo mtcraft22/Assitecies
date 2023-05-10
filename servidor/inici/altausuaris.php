@@ -19,6 +19,7 @@
         </select>
         <input type="submit" name="envia" value="Enregistrat">
     </form><br>
+    <a href="./Assistenciesinici.php"><button>Dessa i  Torna al inici </button></a>
     <button ><a href="tanca.php">Tancar la sesió</a></button>
 </body>
 </html>
