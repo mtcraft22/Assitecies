@@ -81,16 +81,10 @@
             $resultat=$databaseConnection->prepare($sql);
             $resultat->execute();
             $taula=$resultat->fetchAll(PDO::FETCH_ASSOC);
-            echo json_encode($taula);
-           
-            
+            echo json_encode($taula); 
         }            
-        
-        
-
     }catch(PDOException $e){
         echo $e->getMessage();
-    
     }
        
 

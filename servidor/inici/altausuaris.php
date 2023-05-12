@@ -24,6 +24,7 @@
 </body>
 </html>
 <?php
+    
     require("../consultes/dadesconexio.php");
     session_start();
     if(!isset($_SESSION["usuari"])){

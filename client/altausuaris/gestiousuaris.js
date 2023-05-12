@@ -21,9 +21,14 @@ function procesa_taula(dades){
             td.innerHTML=itemele
             tr.append(td)
         })
+        td = document.createElement("td")
         let but=document.createElement("button")
         but.innerHTML="Elimina"
-        tr.append(but)
+        but.addEventListener("click",function(e,fila=tr){
+            $.getJSON("./../../servidor/consultes/usuaris.php",{"extreure":true,"Id":fila.children[0].textContent},procesa_taula)
+        })
+        td.append(but)
+        tr.append(td)
         taula.append(tr)
     })
     tr = document.createElement("tr")

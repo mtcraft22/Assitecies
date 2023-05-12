@@ -28,6 +28,12 @@
     }
 
     $conexio = new PDO('mysql:host='._HOST_NAME_.';dbname='._DATABASE_NAME_, _USER_NAME_, _DB_PASSWORD,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+    if($Id){
+        $sql ="DELETE FROM `usuaris` WHERE `ID`='$Id' ";
+        $resultat=$databaseConnection->prepare($sql);
+        $resultat->execute();
+    }
+
     if($extreureclasse){
         $sql= "SELECT * FROM `usuaris` WHERE 1";
         $resultat=$conexio->prepare($sql);
@@ -35,10 +41,7 @@
         $taula=$resultat->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($taula);
     }
-    // if($id){
-    
-    // }
-
+   
 
 ?>
 
