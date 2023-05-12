@@ -35,7 +35,7 @@
             echo "<br><fieldset id='admin' class='costat'>
             <legend id='panell'>Panell d'aministració</legend>
             <div id='admin2' class='costat2'>
-            <button ><a href='altausuaris.php'>Dona alta a nous usuaris</a></button><br>
+            <button ><a href='../../client/altausuaris/gestiousuarishtml.php'>Dona alta a nous usuaris</a></button><br>
             <button ><a href='../../client/gestioalumneshtml.php'>Dona alta a nous alumnes</a></button><br>
             <div>
             </fieldset>";

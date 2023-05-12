@@ -4,18 +4,6 @@
 body{
     background-color: rgb(253, 176, 140);
 }
-#opcions{
-    background-color: white;
-}
-#opcions p {
- 
-
-    padding: 3px;
-}
-#opcions p:hover{
-    background-color: coral; 
-    cursor: pointer;
-}
 table{
     border-radius: 5px;
     border: 2px solid black;
@@ -29,12 +17,4 @@ table td{
 }
 table tr{
     border: 2px solid black;
-}
-
-#taula tr:hover td{
-    cursor: pointer;
-    background-color: rgb(240, 119, 6);
-}
-#taula td:hover{
-    font-weight: bold;
 }

@@ -41,5 +41,5 @@
         $resultat=$conexio->prepare($consulta);
         $resultat->execute();
     }
-?>
+?> 
 
