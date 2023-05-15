@@ -7,9 +7,12 @@ function procesa_taula(dades){
     taula.setAttribute("id","taula")
     let tr = document.createElement("tr")
     Object.keys(dades[0]).forEach(function(e){
+        
         let td = document.createElement("td")
         td.innerHTML=e
         tr.append(td)
+        
+       
     })
     taula.append(tr)
     dades.forEach(function(item){
@@ -23,7 +26,7 @@ function procesa_taula(dades){
         let but=document.createElement("button")
         but.innerHTML="Elimina"
         but.addEventListener("click",function(e,fila=tr){
-            $.getJSON("./../../servidor/consultes/usuaris.php",{"extreure":true,"Id":fila.children[0].textContent},procesa_taula)
+            $.getJSON("./../../servidor/consultes/usuaris.php",{"extreure":true,"Usuari":fila.children[0].textContent},procesa_taula)
         })
         td.append(but)
         tr.append(td)
@@ -41,7 +44,7 @@ function procesa_taula(dades){
             let inp=document.createElement("input")
             inp.setAttribute("type","password")
             td.append(inp) 
-        }else{
+        }else if(e==="TIPUSUSUARI"){
             let seleccio=document.createElement("select")
             let Met=document.createElement("option")
             Met.setAttribute("value","Mestre")
@@ -56,6 +59,8 @@ function procesa_taula(dades){
             Met.innerHTML="Mestre"
             Admin.innerHTML="Administrador"
             Secre.innerHTML="Secretari"
+        }else{
+            td.innerHTML="Auto id"
         }
         tr.append(td)
     })

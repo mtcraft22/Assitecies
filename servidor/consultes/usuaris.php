@@ -28,20 +28,13 @@
     }
 
     $conexio = new PDO('mysql:host='._HOST_NAME_.';dbname='._DATABASE_NAME_, _USER_NAME_, _DB_PASSWORD,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-    if($Id){
-        $sql =" DELETE FROM `usuaris` WHERE `ID`='$Id' ";
+    if($Usuari){
+        $sql =" DELETE FROM `usuaris` WHERE `USUARI`='$Usuari' ";
         $resultat=$conexio->prepare($sql);
         $resultat->execute();
     }
 
-    if($extreureclasse){
-        $sql= "SELECT `USUARI`, `CONTRASENYA`,`TIPUSUSUARI` FROM `usuaris` WHERE 1";
-        $resultat=$conexio->prepare($sql);
-        $resultat->execute();
-        $taula=$resultat->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($taula);
-    }
-    if($Usuari){
+    if($Contra){
         $usu = htmlentities(addslashes($Usuari));
         $contra = htmlentities(addslashes($Contra));
         $conencript=password_hash($contra,PASSWORD_DEFAULT);
@@ -49,6 +42,14 @@
         $consulta = "INSERT INTO USUARIS (USUARI,CONTRASENYA,TIPUSUSUARI) values ('$usu','$conencript','$tipususuari')";
         $resultat=$conexio->prepare($consulta);
         $resultat->execute();
+    }
+    
+    if($extreureclasse){
+        $sql= "SELECT `USUARI`,`CONTRASENYA`,`TIPUSUSUARI` FROM `usuaris` WHERE 1";
+        $resultat=$conexio->prepare($sql);
+        $resultat->execute();
+        $taula=$resultat->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($taula);
     }
 
 ?>
