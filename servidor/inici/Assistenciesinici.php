@@ -43,7 +43,7 @@
         }elseif($_SESSION["tipus"]=="mestre"){header(("Location:Assitecies/client/passallista/passallista.php"));}
     
     ?>
-    
+
     
     
     

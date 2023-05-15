@@ -35,13 +35,21 @@
     }
 
     if($extreureclasse){
-        $sql= "SELECT * FROM `usuaris` WHERE 1";
+        $sql= "SELECT `USUARI`, `CONTRASENYA`,`TIPUSUSUARI` FROM `usuaris` WHERE 1";
         $resultat=$conexio->prepare($sql);
         $resultat->execute();
         $taula=$resultat->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($taula);
     }
-   
+    if($Usuari){
+        $usu = htmlentities(addslashes($Usuari));
+        $contra = htmlentities(addslashes($Contra));
+        $conencript=password_hash($contra,PASSWORD_DEFAULT);
+        $tipususuari=htmlentities(addslashes($Tipus));
+        $consulta = "INSERT INTO USUARIS (USUARI,CONTRASENYA,TIPUSUSUARI) values ('$usu','$conencript','$tipususuari')";
+        $resultat=$conexio->prepare($consulta);
+        $resultat->execute();
+    }
 
 ?>
 
