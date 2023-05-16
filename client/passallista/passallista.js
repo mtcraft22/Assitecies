@@ -72,3 +72,9 @@ document.addEventListener("keydown",function(e){
         incidecies.style.display='none'
     } 
 })
+function procesa_data(){
+    $.getJSON("./../../servidor/consultes/Assistencies.php",{"Classe":document.getElementById("Classes").value,
+                                                             "Data_final":"1/1/23",
+                                                             "Data_inicial":"2/2/23"
+                                                            },procesa_taula)
+}

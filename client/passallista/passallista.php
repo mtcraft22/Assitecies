@@ -53,6 +53,14 @@
     <div id="taula-contenidor"></div>
     <script src="passallista.js"></script>
     <button onclick="peticio_lista()">Passa llista</button><br>
+    <h1>Filtrar per data</h1>
+    <label>Data inicial: </label><br>
+    <input id="data-inici" type="date"><br>
+    <label>Data final: </label><br>
+    <input id="data-final" type="date"><br>
+    <button onclick="procesa_data()">Filtra</button>
+    <p style="height:20px"></p>
     <a href="../../servidor/inici/Assistenciesinici.php"><button>Desa y torma al inici</button></a>
+    
 </body>
 </html>

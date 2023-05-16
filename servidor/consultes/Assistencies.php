@@ -27,6 +27,24 @@
     }else{
         $Classe=$_GET["Classe"];
     }
+
+    if (!isset($_GET['Data_inicial'])){
+        $Datainicial=false;
+    }else{
+        $Datainicial=$_GET['Data_inicial'];
+    }
+
+    if (!isset($_GET["Data_final"])){
+        $Datafinal=false;
+    }else{
+        $Datafinal=$_GET["Data_final"];
+    }
+    
+    $dt="31/5/23";
+    if($Datainicial){
+        echo date('d/m/Y',strtotime($dt.'+1 days'));
+    }
+
     $databaseConnection = new PDO('mysql:host='._HOST_NAME_.';dbname='._DATABASE_NAME_, _USER_NAME_, _DB_PASSWORD,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
     $hoy = date('d/m/Y');
     $agregarColumna = "ALTER TABLE `$Classe` ADD COLUMN IF NOT EXISTS `$hoy` VARCHAR(40) DEFAULT 'Ha vingut'";

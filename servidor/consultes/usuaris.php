@@ -26,6 +26,7 @@
     }else{
         $Tipus=$_GET["Tipus"];
     }
+    
 
     $conexio = new PDO('mysql:host='._HOST_NAME_.';dbname='._DATABASE_NAME_, _USER_NAME_, _DB_PASSWORD,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
     if($Usuari){
