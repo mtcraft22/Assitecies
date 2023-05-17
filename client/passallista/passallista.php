@@ -18,6 +18,7 @@
 <body>
    
     <div id="opcions" onclick="">
+        <p onclick="setinci('Festiu')">Festiu</p>
         <p onclick="setinci('Ha vingut')">Ha vingut</p>
         <p onclick="setinci('RetardMati')">RetardMati</p>
         <p onclick="setinci('RetardMatiJustificat')">RetardMatiJustificat</p>    

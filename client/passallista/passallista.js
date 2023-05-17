@@ -73,8 +73,9 @@ document.addEventListener("keydown",function(e){
     } 
 })
 function procesa_data(){
+    document.getElementById("data-inici").value
     $.getJSON("./../../servidor/consultes/Assistencies.php",{"Classe":document.getElementById("Classes").value,
-                                                             "Data_final":"1/1/23",
-                                                             "Data_inicial":"2/2/23"
-                                                            },procesa_taula)
+                                                              "Data_final":document.getElementById("data-final").value,
+                                                              "Data_inicial":document.getElementById("data-inici").value
+                                                             },procesa_taula)
 }

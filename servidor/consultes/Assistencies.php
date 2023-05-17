@@ -39,19 +39,26 @@
     }else{
         $Datafinal=$_GET["Data_final"];
     }
-    
-    $dt="31/5/23";
-    if($Datainicial){
-        echo date('d/m/Y',strtotime($dt.'+1 days'));
-    }
+    $hoy = date('Y-m-d');
+    if($Datainicial && $Datafinal){
+        $period = new DatePeriod(
+            new DateTime($Datainicial),
+            new DateInterval('P1D'),
+            new DateTime($Datafinal)
+       );
+        foreach($period as $data=>$valor){
+            echo $valor->format("d/m/Y") ,"\n";
+        }
 
+    }
+    
     $databaseConnection = new PDO('mysql:host='._HOST_NAME_.';dbname='._DATABASE_NAME_, _USER_NAME_, _DB_PASSWORD,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-    $hoy = date('d/m/Y');
+    
     $agregarColumna = "ALTER TABLE `$Classe` ADD COLUMN IF NOT EXISTS `$hoy` VARCHAR(40) DEFAULT 'Ha vingut'";
     $sqlQuery = $databaseConnection->prepare($agregarColumna);
     $sqlQuery->execute();
     
-
+   
     if ($Tipus){
         $agregarAssistencia = "UPDATE `$Classe` SET `$data` = '$Tipus' WHERE `Num` = '$Num'";
         $sqlQuery = $databaseConnection->prepare($agregarAssistencia);
