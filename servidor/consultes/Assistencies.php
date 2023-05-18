@@ -6,9 +6,9 @@
         $Extr=$_GET["extreure"];
     }
     if (!isset($_GET["data"])){
-        $data=false;
+        $datain=false;
     }else{
-        $data=$_GET["data"];
+        $datain=$_GET["data"];
     }
     if (!isset($_GET["Tipus_Assistencia"])){
         $Tipus=false;
@@ -39,30 +39,61 @@
     }else{
         $Datafinal=$_GET["Data_final"];
     }
-    $hoy = date('Y-m-d');
-    if($Datainicial && $Datafinal){
+    $hoy = date('d_m_Y');
+    $data=new DateTime($Datafinal);
+    $databaseConnection = new PDO('mysql:host='._HOST_NAME_.';dbname='._DATABASE_NAME_, _USER_NAME_, _DB_PASSWORD,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+    $agregarColumna = "ALTER TABLE `$Classe` ADD COLUMN IF NOT EXISTS `$hoy` VARCHAR(40) DEFAULT 'Ha vingut'";
+    $sqlQuery = $databaseConnection->prepare($agregarColumna);
+    $sqlQuery->execute();
+    function filtra($Datainicial,$Datafinal,$databaseConnection,$Classe){
+        $dates_a_consultar=array("Num","Nom","Primer_Cognom","Segon_Cognom");
         $period = new DatePeriod(
             new DateTime($Datainicial),
             new DateInterval('P1D'),
             new DateTime($Datafinal)
-       );
+        );
+        $Select = "SELECT * FROM $Classe ORDER BY 'Num' ";
+        $sqlQuery = $databaseConnection->prepare($Select);
+        $sqlQuery->execute();
+        $taula=$sqlQuery->fetchAll(PDO::FETCH_ASSOC);
         foreach($period as $data=>$valor){
-            echo $valor->format("d/m/Y") ,"\n";
+            if(isset($taula[0][$valor->format("d_m_Y")])){
+                array_push($dates_a_consultar,$valor->format("d_m_Y")) ;
+            }
+            
         }
+        $dtf=new DateTime($Datafinal);
+        if(isset($taula[0][$valor->format("d_m_Y")])){
+            array_push($dates_a_consultar,$dtf->format("d_m_Y"));
+        }
+        $strdates=implode(',',$dates_a_consultar);
+
+        $Select = "SELECT $strdates FROM $Classe ORDER BY 'Num' ";
+        $sqlQuery = $databaseConnection->prepare($Select);
+        $sqlQuery->execute();
+        $taula=$sqlQuery->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($taula);
 
     }
-    
-    $databaseConnection = new PDO('mysql:host='._HOST_NAME_.';dbname='._DATABASE_NAME_, _USER_NAME_, _DB_PASSWORD,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-    
-    $agregarColumna = "ALTER TABLE `$Classe` ADD COLUMN IF NOT EXISTS `$hoy` VARCHAR(40) DEFAULT 'Ha vingut'";
-    $sqlQuery = $databaseConnection->prepare($agregarColumna);
-    $sqlQuery->execute();
-    
+    if($Datainicial && $Datafinal){
+        filtra($Datainicial,$Datafinal,$databaseConnection,$Classe);
+    }
+
+
    
     if ($Tipus){
-        $agregarAssistencia = "UPDATE `$Classe` SET `$data` = '$Tipus' WHERE `Num` = '$Num'";
+        $agregarAssistencia = "UPDATE `$Classe` SET `$datain` = '$Tipus' WHERE `Num` = '$Num'";
         $sqlQuery = $databaseConnection->prepare($agregarAssistencia);
         $sqlQuery->execute();
+        if($Datainicial && $Datafinal){
+            filtra($Datainicial,$Datafinal,$databaseConnection,$Classe);
+        }else{
+            $taula=$sqlQuery->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode($taula);
+        }
+    
+    
+
     }
     if($Extr){
         $Select = "SELECT * FROM $Classe ORDER BY 'Num' ";

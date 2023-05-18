@@ -50,13 +50,26 @@ let numalu=0
 let data=""
 function setinci(inci){
     incidencia=inci
-    $.getJSON("./../../servidor/consultes/Assistencies.php",{"Classe":document.getElementById("Classes").value,
+    if(document.getElementById("data-final").value!="" && document.getElementById("data-inici").value!=""){
+        $.getJSON("./../../servidor/consultes/Assistencies.php",{"Classe":document.getElementById("Classes").value,
+                                                                 "Data_final":document.getElementById("data-final").value,
+                                                                 "Data_inicial":document.getElementById("data-inici").value,
+                                                                 "data":data,
+                                                                 "Tipus_Assistencia":incidencia,
+                                                                 "_Numero":numalu},procesa_taula)
+
+                                                
+    }else{
+        $.getJSON("./../../servidor/consultes/Assistencies.php",{"Classe":document.getElementById("Classes").value,
                                                              "extreure":true,
                                                              "data":data,
                                                              "Tipus_Assistencia":incidencia,
                                                              "_Numero":numalu},procesa_taula)
+        }
 
-        incidecies.style.display='none'                                                    }
+    incidecies.style.display='none'                                                    
+    }
+    
 function conf_inicidencia(e,numalup,datap){  
     if (data!=undefined){
         incidecies.style.display='inline'
@@ -73,9 +86,14 @@ document.addEventListener("keydown",function(e){
     } 
 })
 function procesa_data(){
-    document.getElementById("data-inici").value
-    $.getJSON("./../../servidor/consultes/Assistencies.php",{"Classe":document.getElementById("Classes").value,
-                                                              "Data_final":document.getElementById("data-final").value,
-                                                              "Data_inicial":document.getElementById("data-inici").value
-                                                             },procesa_taula)
+    if(document.getElementById("data-final").value!="" && document.getElementById("data-inici").value!=""){
+        $.getJSON("./../../servidor/consultes/Assistencies.php",{
+                                                                    "Classe":document.getElementById("Classes").value,
+                                                                    "Data_final":document.getElementById("data-final").value,
+                                                                    "Data_inicial":document.getElementById("data-inici").value
+                                                                },procesa_taula)
+    }
+    else{
+        alert("CAL POSAR UNA DATA PER FILTRAR")
+    }
 }

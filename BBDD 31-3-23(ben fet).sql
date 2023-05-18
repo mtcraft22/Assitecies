@@ -31,9 +31,7 @@ CREATE TABLE `1ra` (
   `Num` int(2) DEFAULT NULL,
   `Nom` varchar(14) DEFAULT NULL,
   `Primer_Cognom` varchar(10) DEFAULT NULL,
-  `Segon_Cognom` varchar(8) DEFAULT NULL,
-  `09/03/2023` varchar(40) DEFAULT NULL,
-  `10/03/2023` varchar(40) DEFAULT 'Ha vingut'
+  `Segon_Cognom` varchar(8) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -52,8 +50,7 @@ CREATE TABLE `1rb` (
   `Num` int(2) DEFAULT NULL,
   `Nom` varchar(21) DEFAULT NULL,
   `Primer_Cognom` varchar(8) DEFAULT NULL,
-  `Segon_Cognom` varchar(12) DEFAULT NULL,
-  `10/03/2023` varchar(40) DEFAULT 'Ha vingut'
+  `Segon_Cognom` varchar(12) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -72,8 +69,7 @@ CREATE TABLE `2na` (
   `Num` int(2) DEFAULT NULL,
   `Nom` varchar(16) DEFAULT NULL,
   `Primer_Cognom` varchar(10) DEFAULT NULL,
-  `Segon_Cognom` varchar(13) DEFAULT NULL,
-  `10/03/2023` varchar(40) DEFAULT 'Ha vingut'
+  `Segon_Cognom` varchar(13) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -92,9 +88,7 @@ CREATE TABLE `2nb` (
   `Num` int(2) DEFAULT NULL,
   `Nom` varchar(15) DEFAULT NULL,
   `Primer_Cognom` varchar(11) DEFAULT NULL,
-  `Segon_Cognom` varchar(9) DEFAULT NULL,
-  `10/03/2023` varchar(40) DEFAULT 'Ha vingut',
-  `13/03/2023` varchar(40) DEFAULT 'Ha vingut'
+  `Segon_Cognom` varchar(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -187,8 +181,7 @@ CREATE TABLE `4rc` (
   `Num` int(2) DEFAULT NULL,
   `Nom` varchar(16) DEFAULT NULL,
   `Primer_Cognom` varchar(10) DEFAULT NULL,
-  `Segon_Cognom` varchar(9) DEFAULT NULL,
-  `09/03/2023` varchar(40) DEFAULT NULL
+  `Segon_Cognom` varchar(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -281,10 +274,7 @@ CREATE TABLE `i3a` (
   `Nom` varchar(17) DEFAULT NULL,
   `Primer_Cognom` varchar(11) DEFAULT NULL,
   `Segon_Cognom` varchar(9) DEFAULT NULL,
-  `09/03/2023` varchar(40) DEFAULT NULL,
-  `10/03/2023` varchar(40) DEFAULT 'Ha vingut',
-  `13/03/2023` varchar(40) DEFAULT 'Ha vingut',
-  `14/03/2023` varchar(40) DEFAULT 'Ha vingut'
+  `09/03/2023` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -303,8 +293,7 @@ CREATE TABLE `i3b` (
   `Num` int(2) DEFAULT NULL,
   `Nom` varchar(16) DEFAULT NULL,
   `Primer_Cognom` varchar(11) DEFAULT NULL,
-  `Segon_Cognom` varchar(9) DEFAULT NULL,
-  `10/03/2023` varchar(40) DEFAULT 'Ha vingut'
+  `Segon_Cognom` varchar(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -323,8 +312,7 @@ CREATE TABLE `i4a` (
   `Num` int(2) DEFAULT NULL,
   `Nom` varchar(17) DEFAULT NULL,
   `Primer_Cognom` varchar(12) DEFAULT NULL,
-  `Segon_Cognom` varchar(10) DEFAULT NULL,
-  `10/03/2023` varchar(40) DEFAULT 'Ha vingut'
+  `Segon_Cognom` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -378,8 +366,8 @@ CREATE TABLE `i5b` (
   `Num` int(2) DEFAULT NULL,
   `Nom` varchar(17) DEFAULT NULL,
   `Primer_Cognom` varchar(8) DEFAULT NULL,
-  `Segon_Cognom` varchar(9) DEFAULT NULL,
-  `10/03/2023` varchar(40) DEFAULT 'Ha vingut'
+  `Segon_Cognom` varchar(9) DEFAULT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
