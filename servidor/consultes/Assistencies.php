@@ -63,7 +63,8 @@
             
         }
         $dtf=new DateTime($Datafinal);
-        if(isset($taula[0][$valor->format("d_m_Y")])){
+
+        if(isset($taula[0][$dtf->format("d_m_Y")])){
             array_push($dates_a_consultar,$dtf->format("d_m_Y"));
         }
         $strdates=implode(',',$dates_a_consultar);
@@ -71,13 +72,11 @@
         $Select = "SELECT $strdates FROM $Classe ORDER BY 'Num' ";
         $sqlQuery = $databaseConnection->prepare($Select);
         $sqlQuery->execute();
-        $taula=$sqlQuery->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($taula);
+        $taula2=$sqlQuery->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($taula2);
 
     }
-    if($Datainicial && $Datafinal){
-        filtra($Datainicial,$Datafinal,$databaseConnection,$Classe);
-    }
+    
 
 
    
@@ -88,6 +87,9 @@
         if($Datainicial && $Datafinal){
             filtra($Datainicial,$Datafinal,$databaseConnection,$Classe);
         }else{
+            $Select = "SELECT * FROM $Classe ORDER BY 'Num' ";
+            $sqlQuery = $databaseConnection->prepare($Select);
+            $sqlQuery->execute();
             $taula=$sqlQuery->fetchAll(PDO::FETCH_ASSOC);
             echo json_encode($taula);
         }
@@ -96,11 +98,16 @@
 
     }
     if($Extr){
-        $Select = "SELECT * FROM $Classe ORDER BY 'Num' ";
-        $sqlQuery = $databaseConnection->prepare($Select);
-        $sqlQuery->execute();
-        $taula=$sqlQuery->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($taula);
+        if($Datainicial && $Datafinal){
+            filtra($Datainicial,$Datafinal,$databaseConnection,$Classe);
+        }else{
+            $Select = "SELECT * FROM $Classe ORDER BY 'Num' ";
+            $sqlQuery = $databaseConnection->prepare($Select);
+            $sqlQuery->execute();
+            $taula=$sqlQuery->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode($taula);
+        }
+        
     }
     
 

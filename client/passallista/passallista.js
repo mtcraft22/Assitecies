@@ -4,6 +4,9 @@ incidecies.style.position="absolute"
 //fem la peticio al servidor
 function peticio_lista(){
     $.getJSON("./../../servidor/consultes/Assistencies.php",{"Classe":document.getElementById("Classes").value,"extreure":true},procesa_taula)
+    document.getElementById("data-final").value=""
+    document.getElementById("data-inici").value=""
+    
 }
 //procesem la respota del servidor
 function procesa_taula(dades){
@@ -14,14 +17,22 @@ function procesa_taula(dades){
     Object.keys(dades[0]).forEach(function(e){
         let td = document.createElement("td")
         td.innerHTML=e
+  
         tr.append(td)
     })
     taula.append(tr)
     dades.forEach(function(item){
         let tr = document.createElement("tr")
+        
         Object.values(item).forEach(function(itemele){
             var td = document.createElement("td")
-            td.innerHTML=itemele
+            td.style.width="20px"
+            if (itemele=="Ha vingut"){
+                td.innerHTML="&#128515"
+            }else{
+                td.innerHTML=itemele
+            }
+            
             tr.append(td)
             let alunum =td.parentNode.querySelectorAll("td")[0].textContent         
             td.addEventListener("click",function(e){
@@ -51,21 +62,27 @@ let data=""
 function setinci(inci){
     incidencia=inci
     if(document.getElementById("data-final").value!="" && document.getElementById("data-inici").value!=""){
-        $.getJSON("./../../servidor/consultes/Assistencies.php",{"Classe":document.getElementById("Classes").value,
-                                                                 "Data_final":document.getElementById("data-final").value,
-                                                                 "Data_inicial":document.getElementById("data-inici").value,
-                                                                 "data":data,
-                                                                 "Tipus_Assistencia":incidencia,
-                                                                 "_Numero":numalu},procesa_taula)
+        $.getJSON("./../../servidor/consultes/Assistencies.php",{
+                                                            
+                                                                    "Classe":document.getElementById("Classes").value,
+                                                                    "Data_final":document.getElementById("data-final").value,
+                                                                    "Data_inicial":document.getElementById("data-inici").value,
+                                                                    "data":data,
+                                                                    "Tipus_Assistencia":incidencia,
+                                                                    "_Numero":numalu
+                                                                },procesa_taula)
 
                                                 
     }else{
-        $.getJSON("./../../servidor/consultes/Assistencies.php",{"Classe":document.getElementById("Classes").value,
-                                                             "extreure":true,
-                                                             "data":data,
-                                                             "Tipus_Assistencia":incidencia,
-                                                             "_Numero":numalu},procesa_taula)
-        }
+        $.getJSON("./../../servidor/consultes/Assistencies.php",{
+            "Classe":document.getElementById("Classes").value,
+
+
+            "data":data,
+            "Tipus_Assistencia":incidencia,
+            "_Numero":numalu
+        },procesa_taula)
+    }
 
     incidecies.style.display='none'                                                    
     }
@@ -89,6 +106,7 @@ function procesa_data(){
     if(document.getElementById("data-final").value!="" && document.getElementById("data-inici").value!=""){
         $.getJSON("./../../servidor/consultes/Assistencies.php",{
                                                                     "Classe":document.getElementById("Classes").value,
+                                                                    "extreure":true,
                                                                     "Data_final":document.getElementById("data-final").value,
                                                                     "Data_inicial":document.getElementById("data-inici").value
                                                                 },procesa_taula)
