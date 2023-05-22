@@ -11,16 +11,26 @@ function peticio_lista(){
 //procesem la respota del servidor
 function procesa_taula(dades){
     if (document.getElementById("taula")){document.getElementById("taula").remove()}
+
     let taula= document.createElement("table")
+
     taula.setAttribute("id","taula")
     let tr = document.createElement("tr")
-    Object.keys(dades[0]).forEach(function(e){
+    
+    for (let i=0;i<Object.keys(dades[0]).length;i++){
         let td = document.createElement("td")
-        td.innerHTML=e
-  
+       
+        td.innerHTML=Object.keys(dades[0])[i]
         tr.append(td)
-    })
+        if (Object.keys(dades[0])[i]=="Segon_Cognom"){
+            break
+        }
+    }
+
     taula.append(tr)
+    document.getElementById("taula-contenidor").append(taula)
+
+
     dades.forEach(function(item){
         let tr = document.createElement("tr")
         
@@ -29,6 +39,8 @@ function procesa_taula(dades){
             td.style.width="20px"
             if (itemele=="Ha vingut"){
                 td.innerHTML="&#128515"
+            }else if(itemele=="Festiu"){
+                td.innerHTML="&#x1F389"
             }else{
                 td.innerHTML=itemele
             }
@@ -37,17 +49,17 @@ function procesa_taula(dades){
             let alunum =td.parentNode.querySelectorAll("td")[0].textContent         
             td.addEventListener("click",function(e){
                 var child = td
-                var parent = child.parentNode;
-                var childNodes = parent.childNodes;
-                var count = childNodes.length;
-                var child_index;
+                var parent = child.parentNode
+                var childNodes = parent.childNodes
+                var count = childNodes.length
+                var child_index
                 for (let i = 0; i < count; ++i) {
                     if (child === childNodes[i]) {
-                        child_index = i;
-                        break;
+                        child_index = i
+                        break
                     }
                 }
-                let date = taula.querySelector("tr").querySelectorAll("td")[child_index].textContent
+                let date = dades[0][child_index]
                 if (child_index<4){date=undefined}
                 conf_inicidencia(e,alunum ,date)
             })
@@ -112,6 +124,6 @@ function procesa_data(){
                                                                 },procesa_taula)
     }
     else{
-        alert("CAL POSAR UNA DATA PER FILTRAR")
+        alert("CAL POSAR UNA DATA PER FILTRAR, SIUSPLAU")
     }
 }
