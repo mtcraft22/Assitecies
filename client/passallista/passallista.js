@@ -22,11 +22,17 @@ function procesa_taula(dades){
        
         td.innerHTML=Object.keys(dades[0])[i]
         tr.append(td)
-        if (Object.keys(dades[0])[i]=="Segon_Cognom"){
+        if(Object.keys(dades[0])[i]=="Segon_Cognom"){
+            let td = document.createElement("td")
+            td.setAttribute("colspan",5)
+            td.setAttribute("id","dataout")
+            td.innerHTML="Data: "
+            tr.append(td)
             break
         }
+        
     }
-
+    
     taula.append(tr)
     document.getElementById("taula-contenidor").append(taula)
 
@@ -46,7 +52,23 @@ function procesa_taula(dades){
             }
             
             tr.append(td)
-            let alunum =td.parentNode.querySelectorAll("td")[0].textContent         
+            let alunum =td.parentNode.querySelectorAll("td")[0].textContent
+            td.addEventListener("mouseover",function(e){
+                var child = td
+                var parent = child.parentNode
+                var childNodes = parent.childNodes
+                var count = childNodes.length
+                var child_index
+                for (let i = 0; i < count; ++i) {
+                    if (child === childNodes[i]) {
+                        child_index = i
+                        break
+                    }
+                }
+                let date = Object.keys(dades[0])[child_index]
+                document.getElementById("dataout").innerHTML=`Data: ${date}`
+                
+            })
             td.addEventListener("click",function(e){
                 var child = td
                 var parent = child.parentNode
@@ -59,7 +81,7 @@ function procesa_taula(dades){
                         break
                     }
                 }
-                let date = dades[0][child_index]
+                let date = Object.keys(dades[0])[child_index]
                 if (child_index<4){date=undefined}
                 conf_inicidencia(e,alunum ,date)
             })
