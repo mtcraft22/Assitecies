@@ -1,13 +1,26 @@
 //Aquest archiu js te com a funció administrar tot lo relacionat amb l'alta y baixa dels alumnes de l'escola/institut
 //Les pricipals funcions son  mostrar el alumnes , eliminar , tots els alumnes de una classe de cop a partir de un fitxer csv
 //let llista = document.getElementById("Llistat").files
+
+interface alumne{
+    Num:number
+    Nom:string
+    Primer_Cognom:string
+    Segon_Cognom:string
+}
+
+
+
+const classe=document.querySelector(".Classes") as HTMLSelectElement
+require('jquery')
+
 let fs= new FileReader()
 var contingut=null
 function previewFile() {
     const content = document.querySelector("#vamooss") as HTMLParagraphElement
     const input = document.querySelector("input[type=file]") as HTMLInputElement
     const file:FileList = input.files as FileList
-    const reader:FileReader = new FileReader()
+    const reader = new FileReader()
 
     reader.addEventListener(    
         "load",
@@ -19,49 +32,48 @@ function previewFile() {
         }
     );
 
-    if (file) {
+    if (file[0]) {
         //llegim com un text el archiu introduit en el archiu
-        reader.readAsText(file,"ISO-8859-1");
-    }
+        reader.readAsText(file[0],"ISO-8859-1");
+        }
     }
 function show(mode:string){
     const avis = document.getElementById("Antecio") as HTMLDivElement
     avis.style.display=mode
 }
-function procesa_csv(cont){
+function procesa_csv(cont:string){
     show("none")
-    let array_linias:Array<string>=cont.split("\r\n")
-    var array_final:Array<string>
-    array_linias.forEach(function (e:string){
-        array_final.push(e.split(","))
+    let array_linias:string[]=cont.split("\r\n")
+    var array_final:string[]
+    array_linias.forEach(function (e:any){
+        array_final.push(e.split(','))
     });
-    envia(array_final)
+    envia(array_final!)
     
 
 }
 //Importacio a la base de dades desde un csv
-function resposta(dades){
-    document.querySelector("#vamooss").append(document.createElement("h1").innerHTML="Dades actualizades corectament")
-    document.querySelector("#vamooss").append(dades)
+function resposta(dades:string){
+    const text = document.querySelector("#vamooss") as HTMLParagraphElement
+    text.append(document.createElement("h1").innerHTML="Dades actualizades corectament")
+    text.append(dades)
 }
 function envia(array:Array<string>){
     console.log(array.pop())
-    $(document).ready(function(){
-    $.get("../servidor/consultes/gestioalumnes.php",{"llista":array,"classe":document.querySelector(".classeactualiza").value},resposta)
-})
+    $.get("../servidor/consultes/gestioalumnes.php",{"llista":array,"classe":classe.value},resposta)
 }
 
 //petició al servidor d3els registres de una determinada classe
 function extreuretaula(){
     
-    $.getJSON("../servidor/consultes/gestioalumnes.php",{"classe":document.querySelector(".Classes").value,"extreure":true},procesa_taula)
+    $.getJSON("../servidor/consultes/gestioalumnes.php",{"classe":classe.value,"extreure":true},procesa_taula)
    
 }
 //dibuxem la taula amb els alumnes de una derteminada classe retoornats pel servidor 
 function procesa_taula(dades){
 
     if(document.getElementById("taula")){ //si extieix la taula la eliminem ja que esta desactualizada
-        document.getElementById("taula").innerHTML=" "
+        document.getElementById("taula")!.innerHTML=" "
     }
     
     let tabla=document.createElement("table")//creem una nova taula
