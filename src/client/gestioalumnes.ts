@@ -4,19 +4,19 @@
 let fs= new FileReader()
 var contingut=null
 function previewFile() {
-    const content = document.querySelector("#vamooss")
-    const [file] = document.querySelector("input[type=file]").files
-    const reader = new FileReader()
+    const content = document.querySelector("#vamooss") as HTMLParagraphElement
+    const input = document.querySelector("input[type=file]") as HTMLInputElement
+    const file:FileList = input.files as FileList
+    const reader:FileReader = new FileReader()
 
     reader.addEventListener(    
         "load",
         () => {
         // reader.result retorna el que ha legit del archiu
-        contingut=reader.result
+        contingut=reader.result as string
         content.innerText = contingut 
         procesa_csv(contingut)
-        },
-        false
+        }
     );
 
     if (file) {
@@ -24,16 +24,16 @@ function previewFile() {
         reader.readAsText(file,"ISO-8859-1");
     }
     }
-function show(mode){
-    document.getElementById("Antecio").style.display=mode
+function show(mode:string){
+    const avis = document.getElementById("Antecio") as HTMLDivElement
+    avis.style.display=mode
 }
 function procesa_csv(cont){
     show("none")
-    let array_linias=cont.split("\r\n")
-    var array_final=[]
-    let json_string
-    array_linias.forEach(element => {
-        array_final.push(element.split(","))
+    let array_linias:Array<string>=cont.split("\r\n")
+    var array_final:Array<string>
+    array_linias.forEach(function (e:string){
+        array_final.push(e.split(","))
     });
     envia(array_final)
     
@@ -44,7 +44,7 @@ function resposta(dades){
     document.querySelector("#vamooss").append(document.createElement("h1").innerHTML="Dades actualizades corectament")
     document.querySelector("#vamooss").append(dades)
 }
-function envia(array){
+function envia(array:Array<string>){
     console.log(array.pop())
     $(document).ready(function(){
     $.get("../servidor/consultes/gestioalumnes.php",{"llista":array,"classe":document.querySelector(".classeactualiza").value},resposta)
