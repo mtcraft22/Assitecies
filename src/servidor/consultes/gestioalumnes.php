@@ -33,20 +33,21 @@
         $nom=$_GET["nom"];
 
     }
-    if(!isset($_GET["primer"])){
+    if(!isset($_GET["Primer_Cognom"])){
         $primer=false;
     }else{
-        $primer=$_GET["primer"];
+        $primer=$_GET["Primer_Cognom"];
 
     }
-    if(!isset($_GET["segon"])){
+    if(!isset($_GET["Segon_Cognom"])){
         $segon=false;
     }else{
-        $segon=$_GET["segon"];
+        $segon=$_GET["Segon_Cognom"];
 
     }    
     try{
-     
+        $classe='i3a';
+        $extreureclasse=true;
         //eliminem dades dels alumnes actuals eliminan els registre de la taula actual
         $databaseConnection = new PDO('mysql:host='._HOST_NAME_.';dbname='._DATABASE_NAME_, _USER_NAME_, _DB_PASSWORD,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
         if ($llistat !=false and $classe !=false){

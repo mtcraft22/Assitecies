@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/tsc",
-    "copy": "copyfiles -u1 ./src/**/*.html ./src/**/*.css ./src/**/*.php ./dist",
-    "clear": "rmdir ./dist /s /q"
+    "build": ".\\node_modules\\.bin\\tsc.cmd ",
+    "copy": "copyfiles  --up 1 .\\src\\**\\*.html .\\src\\**\\*.css .\\src\\**\\*.php .\\dist ",
+    "clear":"rmdir .\\dist /s /q"
   },
   "author": "",
   "license": "ISC",
