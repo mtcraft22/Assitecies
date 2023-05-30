@@ -1,0 +1,49 @@
+*{
+    font-family: Calibri;
+}
+
+#Antecio{
+    display: none;
+    background-color: red;
+    color: white;
+}
+#Tabla_Classe{
+    border-radius: 5px;
+    border: 2px solid black;
+    background-color: rgb(111, 230, 220);
+    color: rgb(0, 0, 0);
+}
+
+#Tabla_Classe td{
+    border: 1px solid black;
+    
+    background-color: rgb(224, 245, 168);
+}
+#Tabla_Classe th{
+    border: 2px solid black;
+}
+#cuerpo{
+    background-color: rgb(253, 176, 140);
+}
+#manipular{
+    background-color:rgb(224, 245, 168);
+    border-radius: 10px;
+    display: inline-block ;
+    margin-left: 4%;
+    padding: 2%;
+    border: 2px black solid;
+}
+table{
+    border-radius: 5px;
+    border: 2px solid black;
+    background-color: rgb(111, 230, 220);
+    color: rgb(0, 0, 0);
+}
+table td{
+    border: 1px solid black;
+    
+    background-color: rgb(224, 245, 168);
+}
+table tr{
+    border: 2px solid black;
+}

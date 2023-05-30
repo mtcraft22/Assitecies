@@ -1,0 +1,52 @@
+*{
+    font-family: Calibri;
+}
+.RetardMati{
+    color: red;
+}
+
+#cuerpo{
+    background-color: rgb(253, 176, 140);
+}
+#_Numero{
+    border-radius: 5px;
+    border: 1px solid black;
+}
+#Tipus_Assistencia{
+    border-radius: 5px;
+    border: 1px solid black;
+}
+#Boto_Envia{
+    background-color: rgb(224, 245, 168);
+    border-radius: 3px;
+    border: 1px solid rgb(224, 245, 168);
+}
+#Boto_Envia:hover{
+    background-color: rgb(176, 168, 245);
+    border: 1px solid rgb(176, 168, 245);
+    cursor: pointer;
+}
+a:hover{
+    text-decoration: none;
+    background-color: rgb(161, 233, 255);
+    border-radius: 3px;
+    border: 1px solid rgb(161, 233, 255);
+    color:black;
+}
+#Tabla_Classe{
+    border-radius: 5px;
+    border: 2px solid black;
+    background-color: rgb(111, 230, 220);
+    color: rgb(0, 0, 0);
+}
+#Tabla_Classe td{
+    border: 1px solid black;
+    
+    background-color: rgb(224, 245, 168);
+}
+#Tabla_Classe tr{
+    border: 2px solid black;
+}
+#enter{
+    text-decoration: none;
+}
