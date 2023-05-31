@@ -81,18 +81,34 @@
 
    
     if ($Tipus){
-        $agregarAssistencia = "UPDATE `$Classe` SET `$datain` = '$Tipus' WHERE `Num` = '$Num'";
-        $sqlQuery = $databaseConnection->prepare($agregarAssistencia);
-        $sqlQuery->execute();
-        if($Datainicial && $Datafinal){
-            filtra($Datainicial,$Datafinal,$databaseConnection,$Classe);
-        }else{
-            $Select = "SELECT * FROM $Classe ORDER BY 'Num' ";
-            $sqlQuery = $databaseConnection->prepare($Select);
+        if ($Tipus=="Festiu"){
+            $agregarAssistencia = "UPDATE `$Classe` SET `$datain` = 'Festiu' WHERE 1";
+            $sqlQuery = $databaseConnection->prepare($agregarAssistencia);
             $sqlQuery->execute();
-            $taula=$sqlQuery->fetchAll(PDO::FETCH_ASSOC);
-            echo json_encode($taula);
+            if($Datainicial && $Datafinal){
+                filtra($Datainicial,$Datafinal,$databaseConnection,$Classe);
+            }else{
+                $Select = "SELECT * FROM $Classe ORDER BY 'Num' ";
+                $sqlQuery = $databaseConnection->prepare($Select);
+                $sqlQuery->execute();
+                $taula=$sqlQuery->fetchAll(PDO::FETCH_ASSOC);
+                echo json_encode($taula);
+            }
+        }else{
+            $agregarAssistencia = "UPDATE `$Classe` SET `$datain` = '$Tipus' WHERE `Num` = '$Num'";
+            $sqlQuery = $databaseConnection->prepare($agregarAssistencia);
+            $sqlQuery->execute();
+            if($Datainicial && $Datafinal){
+                filtra($Datainicial,$Datafinal,$databaseConnection,$Classe);
+            }else{
+                $Select = "SELECT * FROM $Classe ORDER BY 'Num' ";
+                $sqlQuery = $databaseConnection->prepare($Select);
+                $sqlQuery->execute();
+                $taula=$sqlQuery->fetchAll(PDO::FETCH_ASSOC);
+                echo json_encode($taula);
+            }
         }
+        
     
     
 
