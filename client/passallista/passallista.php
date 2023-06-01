@@ -19,14 +19,12 @@
     <div id="opcions" onclick="">
         <p onclick="setinci('Festiu')">Festiu</p>
         <p onclick="setinci('Ha vingut')">Ha vingut</p>
+        <p onclick="setinci('Absencia Total')">Absencia Total</p>
         <p onclick="setinci('RetardMati')">RetardMati</p>
-        <p onclick="setinci('RetardMatiJustificat')">RetardMatiJustificat</p>    
-        <p onclick="setinci('RetardTardaJustificat')">RetardTardaJustificat</p>    
+        <p onclick="setinci('RetardTarda')">RetardTarda</p>
         <p onclick="setinci('AbsenciaMati')">AbsenciaMati</p>     
         <p onclick="setinci('AbsenciaTarda')">AbsenciaTarda</p> 
-        <p onclick="setinci('AbsenciaTotalJustificat')">AbsenciaTotalJustificat</p>
-        <p onclick="setinci('AbsenciaMatiJustificat')">AbsenciaMatiJustificat</p>   
-        <p onclick="setinci('AbsenciaTardaJustificat')">AbsenciaTardaJustificat</p>  
+       
     </div>
     <select id="Classes" required>
             <option value="---"></option>
