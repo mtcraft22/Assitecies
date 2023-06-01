@@ -1,3 +1,21 @@
+var meses={
+   1:"Gen",
+   2:"Feb",
+   3:"Mar",
+   4:"Abr",
+   5:"Mai",
+   6:"Jun",
+   7:"Jul",
+   8:"Ago",
+   9:"Set",
+   10:"Oct",
+   11:"Nov" ,
+   12:"Des" ,
+}
+
+
+
+
 let incidecies=document.getElementById("opcions")
 incidecies.style.display='none'
 incidecies.style.position="absolute"
@@ -10,32 +28,60 @@ function peticio_lista(){
 }
 //procesem la respota del servidor
 function procesa_taula(dades){
+    var count_columna={}
     if (document.getElementById("taula")){document.getElementById("taula").remove()}
 
     let taula= document.createElement("table")
 
     taula.setAttribute("id","taula")
+    let trariba = document.createElement("tr")
+    taula.append(trariba)
     let tr = document.createElement("tr")
     
     for (let i=0;i<Object.keys(dades[0]).length;i++){
-        let td = document.createElement("td")
-       
-        td.innerHTML=Object.keys(dades[0])[i]
-        tr.append(td)
-        if(Object.keys(dades[0])[i]=="Segon_Cognom"){
+     
+        if(i>3){
             let td = document.createElement("td")
-            td.setAttribute("colspan",5)
-            td.setAttribute("id","dataout")
-            td.innerHTML="Data: "
+            let date = Object.keys(dades[0])[i].split("_")
+            td.innerHTML=date[0] 
             tr.append(td)
-            break
+            if (!count_columna[date[1]]){Object.assign(count_columna,count_columna[date[1]]=1)}else{count_columna[date[1]] ++}
+        }else{
+            let td = document.createElement("td")
+            td.innerHTML=Object.keys(dades[0])[i]
+            tr.append(td)
         }
         
     }
-    
+   
     taula.append(tr)
     document.getElementById("taula-contenidor").append(taula)
-
+    let td_mes = document.createElement("td")
+    trariba.append(td_mes)
+    td_mes.style.background="none"
+    td_mes.style.border="none"
+    td_mes = document.createElement("td")
+    trariba.append(td_mes)
+    td_mes.style.background="none"
+    td_mes.style.border="none"
+    td_mes = document.createElement("td")
+    trariba.append(td_mes)
+    td_mes.style.background="none"
+    td_mes.style.border="none"
+    td_mes = document.createElement("td")
+    trariba.append(td_mes)
+    td_mes.style.background="none"
+    td_mes.style.border="none"
+    Object.entries(count_columna).forEach(function(key){
+        let td_mes = document.createElement("td")
+        td_mes.setAttribute("colspan",key[1])
+        td_mes.innerHTML=meses[ parseInt( key[0])]
+        trariba.append(td_mes)
+    })
+        
+    
+    
+    console.log(count_columna)
 
     dades.forEach(function(item){
         let tr = document.createElement("tr")
@@ -53,22 +99,22 @@ function procesa_taula(dades){
             
             tr.append(td)
             let alunum =td.parentNode.querySelectorAll("td")[0].textContent
-            td.addEventListener("mouseover",function(e){
-                var child = td
-                var parent = child.parentNode
-                var childNodes = parent.childNodes
-                var count = childNodes.length
-                var child_index
-                for (let i = 0; i < count; ++i) {
-                    if (child === childNodes[i]) {
-                        child_index = i
-                        break
-                    }
-                }
-                let date = Object.keys(dades[0])[child_index]
-                document.getElementById("dataout").innerHTML=`Data: ${date}`
+            // td.addEventListener("mouseover",function(e){
+            //     var child = td
+            //     var parent = child.parentNode
+            //     var childNodes = parent.childNodes
+            //     var count = childNodes.length
+            //     var child_index
+            //     for (let i = 0; i < count; ++i) {
+            //         if (child === childNodes[i]) {
+            //             child_index = i
+            //             break
+            //         }
+            //     }
+            //     let date = Object.keys(dades[0])[child_index]
+            //     document.getElementById("dataout").innerHTML=`Data: ${date}`
                 
-            })
+            // })
             td.addEventListener("click",function(e){
                 var child = td
                 var parent = child.parentNode
@@ -98,23 +144,23 @@ function setinci(inci){
     if(document.getElementById("data-final").value!="" && document.getElementById("data-inici").value!=""){
         $.getJSON("./../../servidor/consultes/Assistencies.php",{
                                                             
-                                                                    "Classe":document.getElementById("Classes").value,
-                                                                    "Data_final":document.getElementById("data-final").value,
-                                                                    "Data_inicial":document.getElementById("data-inici").value,
-                                                                    "data":data,
-                                                                    "Tipus_Assistencia":incidencia,
-                                                                    "_Numero":numalu
+                                                                   "Classe":document.getElementById("Classes").value,
+                                                                   "Data_final":document.getElementById("data-final").value,
+                                                                   "Data_inicial":document.getElementById("data-inici").value,
+                                                                   "data":data,
+                                                                   "Tipus_Assistencia":incidencia,
+                                                                   "_Numero":numalu
                                                                 },procesa_taula)
 
                                                 
     }else{
         $.getJSON("./../../servidor/consultes/Assistencies.php",{
-            "Classe":document.getElementById("Classes").value,
+           "Classe":document.getElementById("Classes").value,
 
 
-            "data":data,
-            "Tipus_Assistencia":incidencia,
-            "_Numero":numalu
+           "data":data,
+           "Tipus_Assistencia":incidencia,
+           "_Numero":numalu
         },procesa_taula)
     }
 
@@ -132,17 +178,17 @@ function conf_inicidencia(e,numalup,datap){
 
 }
 document.addEventListener("keydown",function(e){
-    if(e.key === "Escape") {
+    if(e.key ==="Escape") {
         incidecies.style.display='none'
     } 
 })
 function procesa_data(){
     if(document.getElementById("data-final").value!="" && document.getElementById("data-inici").value!=""){
         $.getJSON("./../../servidor/consultes/Assistencies.php",{
-                                                                    "Classe":document.getElementById("Classes").value,
-                                                                    "extreure":true,
-                                                                    "Data_final":document.getElementById("data-final").value,
-                                                                    "Data_inicial":document.getElementById("data-inici").value
+                                                                   "Classe":document.getElementById("Classes").value,
+                                                                   "extreure":true,
+                                                                   "Data_final":document.getElementById("data-final").value,
+                                                                   "Data_inicial":document.getElementById("data-inici").value
                                                                 },procesa_taula)
     }
     else{
