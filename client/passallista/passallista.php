@@ -51,14 +51,56 @@
     <div id="taula-contenidor"></div>
     <script src="passallista.js"></script>
     <button onclick="peticio_lista()">Passa llista</button><br>
-    <h1>Filtrar per data</h1>
-    <label>Data inicial: </label><br>
-    <input id="data-inici" type="date"><br>
-    <label>Data final: </label><br>
-    <input id="data-final" type="date"><br>
-    <button onclick="procesa_data()">Filtra</button>
-    <p style="height:20px"></p>
-    <a href="../../servidor/inici/Assistenciesinici.php"><button>Desa y torma al inici</button></a>
+    <div id="linea">
+        <div>
+            <h1>Filtrar per data</h1><br>
+            <label>Data inicial: </label><br>
+            <input id="data-inici" type="date"><br>
+            <label>Data final: </label><br>
+            <input id="data-final" type="date"><br>
+            <button onclick="procesa_data()">Filtra</button>
+            <p style="height:20px"></p><br>
+            <a href="../../servidor/inici/Assistenciesinici.php"><button>Desa y torma al inici</button></a><br>
+        </div>
+        <div>
+           
+            <p>Legenda emoticones</p>
+            <table>
+                <tr>
+                    <td><p>&#x1F389</p></td>
+                    <td><p>Festiu</p></td>
+                </tr>
+                <tr>
+                    <td><p>&#128515</p></td>
+                    <td><p>Ha vingut</p></td>
+                </tr>
+                <tr>
+                    <td><p>&#x1F62D</p></td>
+                    <td><p>Absencia Total</p></td>
+                </tr>
+                <tr>
+                    <td><p>&#x1F610</p></td>
+                    <td><p>RetardMati</p></td>
+                </tr>
+                <tr>
+                    <td><p>&#x1F611</p></td>
+                    <td><p>RetardTarda</p></td>
+                </tr>
+                <tr>
+                    <td><p>&#x1F630</p></td>
+                    <td><p>AbsenciaMati</p></td>
+                </tr>
+                <tr>
+                    <td><p>&#x1F631</p></td>
+                    <td><p>AbsenciaTarda</p></td>
+                </tr>
+           </table>
+           
+            
+        </div>
+        
+    </div>
+    
     
 </body>
 </html>

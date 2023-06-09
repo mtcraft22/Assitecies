@@ -93,28 +93,22 @@ function procesa_taula(dades){
                 td.innerHTML="&#128515"
             }else if(itemele=="Festiu"){
                 td.innerHTML="&#x1F389"
+            }else if(itemele=="RetardMati"){
+                td.innerHTML="&#x1F610"
+            }else if(itemele=="Absencia Total"){
+                td.innerHTML="&#x1F62D"
+            }else if(itemele=="RetardTarda"){
+                td.innerHTML="&#x1F611"
+            }else if(itemele=="AbsenciaMati"){
+                td.innerHTML="&#x1F630"
+            }else if(itemele=="AbsenciaTarda"){
+                td.innerHTML="&#x1F631"
             }else{
                 td.innerHTML=itemele
             }
-            
             tr.append(td)
             let alunum =td.parentNode.querySelectorAll("td")[0].textContent
-            // td.addEventListener("mouseover",function(e){
-            //     var child = td
-            //     var parent = child.parentNode
-            //     var childNodes = parent.childNodes
-            //     var count = childNodes.length
-            //     var child_index
-            //     for (let i = 0; i < count; ++i) {
-            //         if (child === childNodes[i]) {
-            //             child_index = i
-            //             break
-            //         }
-            //     }
-            //     let date = Object.keys(dades[0])[child_index]
-            //     document.getElementById("dataout").innerHTML=`Data: ${date}`
-                
-            // })
+           
             td.addEventListener("click",function(e){
                 var child = td
                 var parent = child.parentNode

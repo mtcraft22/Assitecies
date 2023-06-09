@@ -38,3 +38,9 @@ table tr{
 #taula td:hover{
     font-weight: bold;
 }
+#linea{
+    display: inline-flex;
+}
+#linea div{
+    margin-right: 100px;
+}
