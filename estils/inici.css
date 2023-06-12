@@ -1,23 +1,14 @@
-*{
-    font-family: Calibri;
+body{
+    background-color: rgb(221, 255, 243);
 }
-.costat{
+#main{
     
-    background-color:rgb(224, 245, 168);
-    border-radius: 10px;
-    float: right;
-   
-    border: 2px black solid;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    text-align: center;
+    width: auto;
 }
-.costat2{
-    margin: 5%;
 
-}
-.formulari{
-    background-color:rgb(224, 245, 168);
-    border-radius: 10px;
-    display: inline-block ;
-    margin-left: 40%;
-    padding: 2%;
-    border: 2px black solid;
-}
+
