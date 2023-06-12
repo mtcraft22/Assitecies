@@ -60,7 +60,14 @@
             <input id="data-final" type="date"><br>
             <button onclick="procesa_data()">Filtra</button>
             <p style="height:20px"></p><br>
-            <a href="../../servidor/inici/Assistenciesinici.php"><button>Desa y torma al inici</button></a><br>
+            <?php
+                if ($_SESSION["tipus"]=="Mestre"){
+                    echo "<a href='../../servidor/login/tanca.php'><button>Desa y tanca la sessió</button></a><br>";
+                }else{
+                    echo "<a href='../../servidor/inici/Assistenciesinici.php'><button>Desa y torma al inici</button></a><br>";
+                }
+            ?>
+            
         </div>
         <div>
            

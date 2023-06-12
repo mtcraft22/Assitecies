@@ -90,19 +90,19 @@ function procesa_taula(dades){
             var td = document.createElement("td")
             td.style.width="20px"
             if (itemele=="Ha vingut"){
-                td.innerHTML="&#128515"
+                td.innerHTML="&#x1F7E2"
             }else if(itemele=="Festiu"){
                 td.innerHTML="&#x1F389"
             }else if(itemele=="RetardMati"){
                 td.innerHTML="&#x1F610"
             }else if(itemele=="Absencia Total"){
-                td.innerHTML="&#x1F62D"
+                td.innerHTML="&#x1f534"
             }else if(itemele=="RetardTarda"){
                 td.innerHTML="&#x1F611"
             }else if(itemele=="AbsenciaMati"){
-                td.innerHTML="&#x1F630"
+                td.innerHTML="&#128993"
             }else if(itemele=="AbsenciaTarda"){
-                td.innerHTML="&#x1F631"
+                td.innerHTML="&#128992"
             }else{
                 td.innerHTML=itemele
             }

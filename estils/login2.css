@@ -1,36 +1,34 @@
-*{
-    font-family: Calibri;
-}
-
 body{
-    background-color: rgb(253, 176, 140);
+    background-color: rgb(221, 255, 243);
 }
 div{
-    display: flex;
-    background-color: rgb(224, 245, 168);
-    margin-left: 35%;
-    margin-right: 35%;
-    margin-top: 10%;
-    border-radius: 10px;
-    border: 2px black solid;
+    margin-top: 12%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    text-align: center;
 }
-div form{
-    flex-wrap: wrap;
-    margin: auto;
-    padding-bottom: 20px;
-    display: grid;
-    
+div button, label{
+    margin: 5%;
 }
-div form label{
-    grid-template-columns: auto auto;
-    margin-top: 15px;
-    
+@media screen and (min-width: 630px){
+    div{
+        width: 25%;
+    }
+}
+@media screen and (max-width: 630px){
+    div{
+        width: 60%;
+    }
+}
+div img{
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
 
-}
-div form  input{
-    margin-top: 15px;
-    width: 100px;
-    resize: horizontal;
-
-}
 
