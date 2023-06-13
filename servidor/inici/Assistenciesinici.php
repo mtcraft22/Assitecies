@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>Assistència d'alumnes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="../../estils/inici.css">
@@ -19,6 +20,7 @@
             <p>Bon dia <?php echo $_SESSION["usuari"] ?></p>
             <p>Te has enregistrat com <?php echo $_SESSION["tipus"] ?></p>
             <a href="../login/tanca.php"><button class="btn btn-primary" >Tancar la sesió </button></a>
+            
             <p>Assistència d'alumnes<p>
             <a href="./../../client/passallista/passallista.php"><button class="btn btn-primary">Passar LLista</button></a>
        

@@ -13,9 +13,6 @@ var meses={
    12:"Des" ,
 }
 
-
-
-
 let incidecies=document.getElementById("opcions")
 incidecies.style.display='none'
 incidecies.style.position="absolute"

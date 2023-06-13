@@ -8,7 +8,31 @@ body{
     margin-right: auto;
     align-items: center;
     text-align: center;
-    width: auto;
+
+    
+}
+@media screen and (min-width: 1080px) {
+    #main {
+        margin-top: 12%;
+    
+    }
+    div button{
+        width: 25%;
+        margin: 1%;
+    }
+    
+}
+@media screen and (max-width: 1080px) {
+    #main {
+        margin-top: 30%;
+        
+    }
+    div button{
+        width: 75%;
+        margin: 1%;
+        height: 20%;
+    }
+    
 }
 
 
