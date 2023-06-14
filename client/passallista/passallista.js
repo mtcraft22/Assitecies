@@ -12,7 +12,7 @@ var meses={
    11:"Nov" ,
    12:"Des" ,
 }
-
+var avui=Date.prototype.getDate()
 let incidecies=document.getElementById("opcions")
 incidecies.style.display='none'
 incidecies.style.position="absolute"
@@ -29,16 +29,16 @@ function procesa_taula(dades){
     if (document.getElementById("taula")){document.getElementById("taula").remove()}
 
     let taula= document.createElement("table")
-
     taula.setAttribute("id","taula")
     let trariba = document.createElement("tr")
     taula.append(trariba)
     let tr = document.createElement("tr")
-    
+   
     for (let i=0;i<Object.keys(dades[0]).length;i++){
      
         if(i>3){
             let td = document.createElement("td")
+           
             let date = Object.keys(dades[0])[i].split("_")
             td.innerHTML=date[0] 
             tr.append(td)

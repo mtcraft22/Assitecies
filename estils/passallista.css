@@ -11,12 +11,9 @@ body{
     background-color: coral; 
     cursor: pointer;
 }
-/* table{
-    border-radius: 5px;
-    border: 2px solid black;
-    background-color: rgb(111, 230, 220);
-    color: rgb(0, 0, 0);
-}
+table{
+    border-color: black;
+}/*
 table td{
     border: 1px solid black;
     
