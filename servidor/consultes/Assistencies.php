@@ -1,5 +1,6 @@
 <?php
     require("dadesconexio.php");
+    
     if (!isset($_GET["extreure"])){
         $Extr=false;
     }else{
@@ -76,60 +77,39 @@
         echo json_encode($taula2);
 
     }
-    
-
-
-   
     if ($Tipus){
         if ($Tipus=="Festiu"){
             $agregarAssistencia = "UPDATE `$Classe` SET `$datain` = 'Festiu' WHERE 1";
             $sqlQuery = $databaseConnection->prepare($agregarAssistencia);
             $sqlQuery->execute();
-            if($Datainicial && $Datafinal){
-                filtra($Datainicial,$Datafinal,$databaseConnection,$Classe);
-            }else{
-                $Select = "SELECT * FROM $Classe ORDER BY 'Num' ";
-                $sqlQuery = $databaseConnection->prepare($Select);
-                $sqlQuery->execute();
-                $taula=$sqlQuery->fetchAll(PDO::FETCH_ASSOC);
-                echo json_encode($taula);
-            }
-        }else{
+          
+        }
+        else{
             $agregarAssistencia = "UPDATE `$Classe` SET `$datain` = '$Tipus' WHERE `Num` = '$Num'";
             $sqlQuery = $databaseConnection->prepare($agregarAssistencia);
             $sqlQuery->execute();
-            if($Datainicial && $Datafinal){
-                filtra($Datainicial,$Datafinal,$databaseConnection,$Classe);
-            }else{
-                $Select = "SELECT * FROM $Classe ORDER BY 'Num' ";
-                $sqlQuery = $databaseConnection->prepare($Select);
-                $sqlQuery->execute();
-                $taula=$sqlQuery->fetchAll(PDO::FETCH_ASSOC);
-                echo json_encode($taula);
-            }
+            
         }
-        
-    
-    
-
-    }
-    if($Extr){
         if($Datainicial && $Datafinal){
-            filtra($Datainicial,$Datafinal,$databaseConnection,$Classe);
-        }else{
-            $Select = "SELECT * FROM $Classe ORDER BY 'Num' ";
+                filtra($Datainicial,$Datafinal,$databaseConnection,$Classe);
+            }
+        else{
+            $Select = "SELECT `Num`,`Nom`,`Primer_Cognom`,`Segon_Cognom`,`$hoy` FROM $Classe ORDER BY 'Num' ";
             $sqlQuery = $databaseConnection->prepare($Select);
             $sqlQuery->execute();
             $taula=$sqlQuery->fetchAll(PDO::FETCH_ASSOC);
             echo json_encode($taula);
         }
-        
     }
-    
-
-
-
-
-
-
+    if($Extr){
+        if($Datainicial && $Datafinal){
+            filtra($Datainicial,$Datafinal,$databaseConnection,$Classe);
+        }else{
+            $Select = "SELECT `Num`,`Nom`,`Primer_Cognom`,`Segon_Cognom`,`$hoy`  FROM $Classe ORDER BY 'Num' ";
+            $sqlQuery = $databaseConnection->prepare($Select);
+            $sqlQuery->execute();
+            $taula=$sqlQuery->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode($taula);
+        }
+    }
 ?>
