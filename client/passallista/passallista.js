@@ -10,76 +10,78 @@ var meses = {
     9: "Set",
     10: "Oct",
     11: "Nov",
-    12: "Des",
-}
-let incidecies = document.getElementById("opcions")
+    12: "Des"
+};
+let incidecies = document.getElementById("opcions");
 incidecies.style.display = 'none';
 incidecies.style.position = "absolute";
 //fem la peticio al servidor
+
 function peticio_lista() {
-    $.getJSON("./../../servidor/consultes/Assistencies.php", {"Classe": document.getElementById("Classes").value, "extreure": true}, procesa_taula)
+    $.getJSON("./../../servidor/consultes/Assistencies.php", {"Classe": document.getElementById("Classes").value, "extreure": true}, procesa_taula);
     document.getElementById("data-final").value = "";
     document.getElementById("data-inici").value = "";
 
 }
 //procesem la respota del servidor
 function procesa_taula(dades) {
-    var count_columna = {}
+    var count_columna = {};
     if (document.getElementById("taula")) {
-        document.getElementById("taula").remove()
+        document.getElementById("taula").remove();
     }
 
-    let taula = document.createElement("table")
-    taula.setAttribute("id", "taula")
-    let trariba = document.createElement("tr")
-    taula.append(trariba)
-    let tr = document.createElement("tr")
+    let taula = document.createElement("table");
+    taula.setAttribute("id", "taula");
+    let trariba = document.createElement("tr");
+    taula.append(trariba);
+    let tr = document.createElement("tr");
 
     for (let i = 0; i < Object.keys(dades[0]).length; i++) {
 
         if (i > 3) {
-            let td = document.createElement("td")
+            let td = document.createElement("td");
 
-            let date = Object.keys(dades[0])[i].split("_")
-            td.innerHTML = date[0]
-            tr.append(td)
+            let date = Object.keys(dades[0])[i].split("_");
+            td.innerHTML = date[0];
+            tr.append(td);
             if (!count_columna[date[1]]) {
-                Object.assign(count_columna, count_columna[date[1]] = 1)
+                Object.assign(count_columna, count_columna[date[1]] = 1);
             } else {
-                count_columna[date[1]]++
+                count_columna[date[1]]++;
             }
         } else {
-            let td = document.createElement("td")
-            td.innerHTML = Object.keys(dades[0])[i]
-            tr.append(td)
+            let td = document.createElement("td");
+            td.innerHTML = Object.keys(dades[0])[i];
+            tr.append(td);
         }
 
     }
 
-    taula.append(tr)
-    document.getElementById("taula-contenidor").append(taula)
-    let td_mes = document.createElement("td")
-    trariba.append(td_mes)
-    td_mes.style.background = "none"
-    td_mes.style.border = "none"
-    td_mes = document.createElement("td")
-    trariba.append(td_mes)
-    td_mes.style.background = "none"
-    td_mes.style.border = "none"
-    td_mes = document.createElement("td")
-    trariba.append(td_mes)
-    td_mes.style.background = "none"
-    td_mes.style.border = "none"
-    td_mes = document.createElement("td")
-    trariba.append(td_mes)
-    td_mes.style.background = "none"
-    td_mes.style.border = "none"
+    taula.append(tr);
+    document.getElementById("taula-contenidor").append(taula);
+    let td_mes = document.createElement("td");
+    trariba.append(td_mes);
+   
+    td_mes.style.background = "none";
+    td_mes.style.border = "none";
+    td_mes = document.createElement("td");
+    trariba.append(td_mes);
+    td_mes.style.background = "none";
+    td_mes.style.border = "none";
+    td_mes = document.createElement("td");
+    trariba.append(td_mes);
+    td_mes.style.background = "none";
+    td_mes.style.border = "none";
+    td_mes = document.createElement("td");
+    trariba.append(td_mes);
+    td_mes.style.background = "none";
+    td_mes.style.border = "none";
     Object.entries(count_columna).forEach(function (key) {
-        let td_mes = document.createElement("td")
-        td_mes.setAttribute("colspan", key[1])
-        td_mes.innerHTML = meses[ parseInt(key[0])]
-        trariba.append(td_mes)
-    })
+        let td_mes = document.createElement("td");
+        td_mes.setAttribute("colspan", key[1]);
+        td_mes.innerHTML = meses[ parseInt(key[0])];
+        trariba.append(td_mes);
+    });
 
 
 
@@ -108,38 +110,38 @@ function procesa_taula(dades) {
             } else {
                 td.innerHTML = itemele;
             }
-            tr.append(td)
-            let alunum = td.parentNode.querySelectorAll("td")[0].textContent
+            tr.append(td);
+            let alunum = td.parentNode.querySelectorAll("td")[0].textContent;
 
             td.addEventListener("click", function (e) {
-                var child = td
-                var parent = child.parentNode
-                var childNodes = parent.childNodes
-                var count = childNodes.length
-                var child_index
+                var child = td;
+                var parent = child.parentNode;
+                var childNodes = parent.childNodes;
+                var count = childNodes.length;
+                var child_index;
                 for (let i = 0; i < count; ++i) {
                     if (child === childNodes[i]) {
-                        child_index = i
+                        child_index = i;
                         break
                     }
                 }
-                let date = Object.keys(dades[0])[child_index]
+                let date = Object.keys(dades[0])[child_index];
                 if (child_index < 4) {
-                    date = undefined
+                    date = undefined;
                 }
-                conf_inicidencia(e, alunum, date)
-            })
-        })
-        taula.append(tr)
-    })
-    document.getElementById("taula-contenidor").append(taula)
+                conf_inicidencia(e, alunum, date);
+            });
+        });
+        taula.append(tr);
+    });
+    document.getElementById("taula-contenidor").append(taula);
 }
-let incidencia = ""
-let numalu = 0
-let data = ""
+let incidencia = "";
+let numalu = 0;
+let data = "";
 function setinci(inci) {
-    incidencia = inci
-    if (document.getElementById("data-final").value != "" && document.getElementById("data-inici").value != "") {
+    incidencia = inci;
+    if (document.getElementById("data-final").value !== "" && document.getElementById("data-inici").value !== "") {
         $.getJSON("./../../servidor/consultes/Assistencies.php", {
 
             "Classe": document.getElementById("Classes").value,
@@ -148,7 +150,7 @@ function setinci(inci) {
             "data": data,
             "Tipus_Assistencia": incidencia,
             "_Numero": numalu
-        }, procesa_taula)
+        }, procesa_taula);
 
 
     } else {
@@ -158,36 +160,36 @@ function setinci(inci) {
             "data": data,
             "Tipus_Assistencia": incidencia,
             "_Numero": numalu
-        }, procesa_taula)
+        }, procesa_taula);
     }
 
-    incidecies.style.display = 'none'
+    incidecies.style.display = 'none';
 }
 
 function conf_inicidencia(e, numalup, datap) {
-    if (data != undefined) {
-        incidecies.style.display = 'inline'
-        incidecies.style.top = e.clientY + 20 + "px"
-        incidecies.style.left = e.clientX + "px"
-        data = datap
-        numalu = numalup
+    if (data !== undefined) {
+        incidecies.style.display = 'inline';
+        incidecies.style.top = e.clientY + 20 + "px";
+        incidecies.style.left = e.clientX + "px";
+        data = datap;
+        numalu = numalup;
     }
 
 }
 document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") {
-        incidecies.style.display = 'none'
+        incidecies.style.display = 'none';
     }
-})
+});
 function procesa_data() {
-    if (document.getElementById("data-final").value != "" && document.getElementById("data-inici").value != "") {
+    if (document.getElementById("data-final").value !== "" && document.getElementById("data-inici").value !== "") {
         $.getJSON("./../../servidor/consultes/Assistencies.php", {
             "Classe": document.getElementById("Classes").value,
             "extreure": true,
             "Data_final": document.getElementById("data-final").value,
             "Data_inicial": document.getElementById("data-inici").value
-        }, procesa_taula)
+        }, procesa_taula);
     } else {
-        alert("CAL POSAR UNA DATA PER FILTRAR, SIUSPLAU")
+        alert("CAL POSAR UNA DATA PER FILTRAR, SIUSPLAU");
     }
 }
