@@ -19,18 +19,20 @@
     <div id="main" >
             <p>Bon dia <?php echo $_SESSION["usuari"] ?></p>
             <p>Te has enregistrat com <?php echo $_SESSION["tipus"] ?></p>
-            <a href="../login/tanca.php"><button class="btn btn-primary" >Tancar la sesió </button></a>
+            <a id="enlace" href="../login/tanca.php">Tancar la sesió </a>
             
             <p>Assistència d'alumnes<p>
-            <a href="./../../client/passallista/passallista.php"><button class="btn btn-primary">Passar LLista</button></a>
+            <a id="enlace" href="./../../client/passallista/passallista.php">Passar LLista</a>
+            <p>Informes</p>
+            <a id='enlace' href='../../client/informe.php'>Genera un Informe mensual</a><br>
        
     <?php 
         if ($_SESSION["tipus"]=="Administrador"){
             echo "<br>
            
                 <p id='panell'>Panell d'aministració</p>
-                <a href='../../client/altausuaris/gestiousuarishtml.php'> <button class='btn btn-primary' >Dona alta a nous usuaris</button></a><br>
-                <a href='../../client/gestioalumneshtml.php'><button class='btn btn-primary' > Dona alta a nous alumnes</button></a><br>
+                <a id='enlace' href='../../client/altausuaris/gestiousuarishtml.php'>Dona alta a nous usuaris</a><br>
+                <a id='enlace' href='../../client/gestioalumneshtml.php'>Dona alta a nous alumnes</a><br>
            ";
     
         }elseif($_SESSION["tipus"]=="Mestre"){
@@ -39,7 +41,8 @@
             echo "<br>
            
                 <p id='panell'>Panell d'aministració</p>
-                <a href='../../client/gestioalumneshtml.php'><button class='btn btn-primary' >Dona alta a nous alumnes</button></a><br>
+                <a id='enlace' href='../../client/gestioalumneshtml.php'>Dona alta a nous alumnes</a><br>
+                
            ";
         }   
     
