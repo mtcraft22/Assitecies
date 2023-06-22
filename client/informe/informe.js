@@ -24,9 +24,6 @@ function request_data(){
         
         )
 }
-function render_inform() {
-        return null;
-    }
 function request_inform(){
         return null;
     }
@@ -38,91 +35,109 @@ function procesa_taula(dades) {
 
     let taula = document.createElement("table");
     taula.setAttribute("id", "taula");
-    let trariba = document.createElement("tr");
-    taula.append(trariba);
+    
     let tr = document.createElement("tr");
+    tr.setAttribute("id","primero")
 
-    for (let i = 0; i < Object.keys(dades[0]).length; i++) {
-
-        if (i > 3) {
-            let td = document.createElement("td");
-
-            let date = Object.keys(dades[0])[i].split("_");
-            td.innerHTML = date[0];
-            tr.append(td);
-            if (!count_columna[date[1]]) {
-                Object.assign(count_columna, count_columna[date[1]] = 1);
-            } else {
-                count_columna[date[1]]++;
-            }
-        } else {
-            let td = document.createElement("td");
-            td.innerHTML = Object.keys(dades[0])[i];
-            tr.append(td);
-        }
-
-    }
-
+    
+    td = document.createElement("td");
+    td.innerHTML=" Hv"
+    tr.append(td)
+    td = document.createElement("td");
+    td.innerHTML=" R "
+    tr.append(td)
+    td = document.createElement("td");
+    td.innerHTML=" AP "
+    tr.append(td)
+    td = document.createElement("td");
+    td.innerHTML=" AT"
+    tr.append(td)
+    td = document.createElement("td");
+    td.innerHTML=" F "
+    tr.append(td)
     taula.append(tr);
     document.getElementById("informe").append(taula);
-    let td_mes = document.createElement("td");
-    trariba.append(td_mes);
-   
-    td_mes.style.background = "none";
-    td_mes.style.border = "none";
-    td_mes = document.createElement("td");
-    trariba.append(td_mes);
-    td_mes.style.background = "none";
-    td_mes.style.border = "none";
-    td_mes = document.createElement("td");
-    trariba.append(td_mes);
-    td_mes.style.background = "none";
-    td_mes.style.border = "none";
-    td_mes = document.createElement("td");
-    trariba.append(td_mes);
-    td_mes.style.background = "none";
-    td_mes.style.border = "none";
-    Object.entries(count_columna).forEach(function (key) {
-        let td_mes = document.createElement("td");
-        td_mes.setAttribute("colspan", key[1]);
-        td_mes.innerHTML = meses[ parseInt(key[0])];
-        trariba.append(td_mes);
-    });
+    
+    
+    for (let i = 0; i < Object.keys(dades[0]).length; i++) {
 
+        document.getElementById("primero").prepend(document.createElement("td"))
+
+    }
 
 
     console.log(count_columna)
 
     dades.forEach(function (item) {
         let tr = document.createElement("tr")
-
+     
+               
+            
+        let havingut = 0
+        let retards = 0
+        let absenciesparcials = 0
+        let absenciestotals = 0
+        let Festiu = 0
         Object.values(item).forEach(function (itemele) {
+            
             var td = document.createElement("td")
             td.style.width = "20px"
             if (itemele === "Ha vingut") {
                 td.innerHTML = "&#x1F7E2";
+                havingut ++
             } else if (itemele === "Festiu") {
                 td.innerHTML = "&#x1F389";
-            } else if (itemele === "RetardMati") {
+                Festiu ++
+            } else if (itemele === "RetardMati") {  
                 td.innerHTML = "&#x1F610";
+                retards ++
             } else if (itemele === "Absencia Total") {
                 td.innerHTML = "&#x1f534";
+                absenciestotals ++
             } else if (itemele === "RetardTarda") {
                 td.innerHTML = "&#x1F611";
+                retards ++
             } else if (itemele === "AbsenciaMati") {
                 td.innerHTML = "&#128993";
+                absenciesparcials ++
             } else if (itemele === "AbsenciaTarda") {
                 td.innerHTML = "&#128992";
+                absenciesparcials ++
             } else {
                 td.innerHTML = itemele;
             }
+            
             tr.append(td);
-           
+            
+            
+            
 
             
         });
+            
+            td = document.createElement("td");
+            td.innerHTML=" " +havingut + " "
+            tr.append(td)
+            td = document.createElement("td");
+            td.innerHTML=" " +retards+ " "
+            tr.append(td)
+            td = document.createElement("td");
+            td.innerHTML=" " +absenciesparcials+ " "
+            tr.append(td)
+            td = document.createElement("td");
+            td.innerHTML=" " +absenciestotals+ " "
+            tr.append(td)
+            td = document.createElement("td");
+            td.innerHTML= " " +Festiu+ " "
+            tr.append(td)
+        
         taula.append(tr);
+        
+        
     });
+    
+    
+            
     document.getElementById("informe").prepend(taula);
 }
 
