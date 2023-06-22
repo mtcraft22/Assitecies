@@ -60,8 +60,9 @@ function procesa_taula(dades) {
     
     
     for (let i = 0; i < Object.keys(dades[0]).length; i++) {
-
-        document.getElementById("primero").prepend(document.createElement("td"))
+        let a =document.createElement("td")
+        a.setAttribute("id","fora")
+        document.getElementById("primero").prepend(a)
 
     }
 
