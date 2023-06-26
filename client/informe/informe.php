@@ -22,7 +22,7 @@
         
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+      
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <link href="../../estils/informe.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -70,19 +70,22 @@
             <option value="6eB">6eB</option>
          </select><br>
          <button onclick="request_data()">Generar informe</button><br>
-         <div id="informe">
-             <table id="legenda">
-                    <tr>
-                        <td> &#x1F7E2 : Ha vingut </td>
-                        <td> &#x1F389 : Festiu </td>
-                        <td> &#x1F610 : Retard Mati </td>
-                        <td> &#x1f534: Absencia Total </td>
-                        <td> &#x1F611 : RetardTarda </td>
-                        <td> &#128993: AbsenciaMati </td>
-                        <td> &#128992 : AbsenciaTarda</td>
-                    </tr>
-                </table>
+         <div>
+             <div style="font-family: DejaVu Sans;" id="informe">
+             
+                    
+                <p> 
+                    Hv : Ha vingut <br>
+                    F : Festiu <br>
+                    R : Retard Mati/RetardTarda <br>
+                    AT: Absencia Total <br> 
+                    AP: AbsenciaMati/AbsenciaTarda <br>
+                </p>
+                       
+             
          </div>
+         </div>
+         
         <a href="../../servidor/inici/Assistenciesinici.php"><button>Dessa i  Torna al inici </button></a><br>
         <a href="../../servidor/login/tanca.php"><button >Tancar la sesió</button></a>
         <script src="informe.js"></script>

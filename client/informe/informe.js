@@ -15,7 +15,6 @@ var meses = {
 
 function request_data(){
         $.getJSON("../../servidor/consultes/gernerarinforme.php",
-        
         {
             "Month":document.getElementById("select-month").value,
             "Class":document.getElementById("select-class").value
@@ -25,23 +24,41 @@ function request_data(){
         )
 }
 function request_inform(){
-        return null;
+        cosa="<meta charset='utf-8'>"
+        cosa+=document.getElementById("informe").outerHTML
+        $.post("../../servidor/consultes/gernerarinforme.php",
+        {
+            "Html":cosa
+         
+        })
+        
     }
 function procesa_taula(dades) {
+    
     var count_columna = {};
     if (document.getElementById("taula")) {
         document.getElementById("taula").remove();
     }
 
     let taula = document.createElement("table");
+    if(document.getElementById("linkpdf")){document.getElementById("linkpdf").remove()}
+    let link = document.createElement("a")
+    link.setAttribute("id","linkpdf")
+    link.setAttribute("href","../../servidor/consultes/informe.pdf")
+    link.setAttribute("target","_blank")
+    link.setAttribute("dowload","informe.pdf")
+    link.innerHTML="Vizualiza en pdf"
+    
+    
     taula.setAttribute("id", "taula");
+    taula.setAttribute("style","font-family: DejaVu Sans;")
     
     let tr = document.createElement("tr");
     tr.setAttribute("id","primero")
 
     
     td = document.createElement("td");
-    td.innerHTML=" Hv"
+    td.innerHTML=" Hv "
     tr.append(td)
     td = document.createElement("td");
     td.innerHTML=" R "
@@ -59,7 +76,7 @@ function procesa_taula(dades) {
     document.getElementById("informe").append(taula);
     
     
-    for (let i = 0; i < Object.keys(dades[0]).length; i++) {
+    for (let i = 0; i < 4; i++) {
         let a =document.createElement("td")
         a.setAttribute("id","fora")
         document.getElementById("primero").prepend(a)
@@ -80,40 +97,44 @@ function procesa_taula(dades) {
         let absenciestotals = 0
         let Festiu = 0
         Object.values(item).forEach(function (itemele) {
-            
-            var td = document.createElement("td")
+
+           
             td.style.width = "20px"
             if (itemele === "Ha vingut") {
-                td.innerHTML = "&#x1F7E2";
-                havingut ++
+             
+                havingut++
             } else if (itemele === "Festiu") {
-                td.innerHTML = "&#x1F389";
-                Festiu ++
-            } else if (itemele === "RetardMati") {  
-                td.innerHTML = "&#x1F610";
-                retards ++
+               
+                Festiu++
+            } else if (itemele === "RetardMati") {
+              
+                retards++
             } else if (itemele === "Absencia Total") {
-                td.innerHTML = "&#x1f534";
-                absenciestotals ++
+             
+                absenciestotals++
             } else if (itemele === "RetardTarda") {
-                td.innerHTML = "&#x1F611";
-                retards ++
+          
+                retards++
             } else if (itemele === "AbsenciaMati") {
-                td.innerHTML = "&#128993";
-                absenciesparcials ++
+          
+                absenciesparcials++
             } else if (itemele === "AbsenciaTarda") {
-                td.innerHTML = "&#128992";
-                absenciesparcials ++
-            } else {
+            
+                absenciesparcials++
+            } else{
+                td=document.createElement("td")
                 td.innerHTML = itemele;
+                tr.append(td)
             }
-            
-            tr.append(td);
-            
-            
+                
             
 
             
+
+
+
+
+
         });
             
             td = document.createElement("td");
@@ -140,6 +161,9 @@ function procesa_taula(dades) {
     
             
     document.getElementById("informe").prepend(taula);
+    document.getElementById("informe").parentElement.prepend(link);
+    request_inform();
+        
 }
 
 
