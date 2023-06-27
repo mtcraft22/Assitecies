@@ -1,5 +1,6 @@
 #fora{
     border: none;
+    background-color: white;
 }
 
 table td{
@@ -7,7 +8,4 @@ table td{
     padding-left: 5px;
     padding-right: 5px;
     background-color: rgb(224, 245, 168);
-}
-table tr{
-    border: 2px solid black;
 }

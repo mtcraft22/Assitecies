@@ -1,3 +1,4 @@
+try{
 var meses = {
     1: "Gen",
     2: "Feb",
@@ -134,7 +135,7 @@ function procesa_taula(dades) {
         });
         taula.append(tr);
     });
-    document.getElementById("taula-contenidor").append(taula);
+    document.getElementById("taula-contenidor").prepend(taula);
 }
 let incidencia = "";
 let numalu = 0;
@@ -192,4 +193,7 @@ function procesa_data() {
     } else {
         alert("CAL POSAR UNA DATA PER FILTRAR, SIUSPLAU");
     }
+}
+}catch (err){
+    alert(err.message)
 }

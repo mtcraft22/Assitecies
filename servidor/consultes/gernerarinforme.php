@@ -58,7 +58,9 @@
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
         $bytes = file_put_contents("informe.pdf", $dompdf->output());
-        header("Location:informe.pdf")
+      
+                
+        
     }
     
      

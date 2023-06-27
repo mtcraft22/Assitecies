@@ -24,7 +24,7 @@
             <p>Assistència d'alumnes<p>
             <a id="enlace" href="./../../client/passallista/passallista.php">Passar LLista</a>
             <p>Informes</p>
-            <a id='enlace' href='../../client/informe.php'>Genera un Informe mensual</a><br>
+            <a id='enlace' href='../../client/informe/informe.php'>Genera un Informe mensual</a><br>
        
     <?php 
         if ($_SESSION["tipus"]=="Administrador"){

@@ -1,7 +1,7 @@
     <?php
         session_start();
             if(!isset($_SESSION["usuari"])){
-                header("location:../login/login.php"); 
+                header("location:../../servidor/login/login.php"); 
             }
     ?>
     <!DOCTYPE html>
@@ -50,7 +50,19 @@
                     <option value="6eA">6eA</option>
                     <option value="6eB">6eB</option>
             </select><br><br>
-            <div id="taula-contenidor"></div>
+            <div id="taula-contenidor">
+                <table id="legenda">
+                    <tr>
+                        <td> &#x1F7E2 : Ha vingut </td>
+                        <td> &#x1F389 : Festiu </td>
+                        <td> &#x1F610 : Retard Mati </td>
+                        <td> &#x1f534: Absencia Total </td>
+                        <td> &#x1F611 : RetardTarda </td>
+                        <td> &#128993: AbsenciaMati </td>
+                        <td> &#128992 : AbsenciaTarda</td>
+                    </tr>
+                </table>
+            </div>
             <script src="passallista.js"></script>
             <button onclick="peticio_lista()">Passa llista</button><br>
             <div id="linea">
@@ -61,9 +73,9 @@
                         <input id="data-inici" type="date"><br>
                         <label>Data final: </label><br>
                         <input id="data-final" type="date"><br>
-                        <button onclick="procesa_data()">Filtra</button>
-                    </form>
                         
+                    </form>
+                    <button onclick="procesa_data()">Filtra</button>
                     <p style="height:20px"></p><br>
                     <?php
                         if ($_SESSION["tipus"]=="Mestre"){
@@ -76,8 +88,6 @@
                     
             </div>
         </div>
-    </div>  
-    
-        
+    </div>   
 </body>
 </html>

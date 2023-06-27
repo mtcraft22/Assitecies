@@ -26,7 +26,6 @@
 --
 -- Estructura de la taula `1ra`
 --
-
 CREATE TABLE `1ra` (
   `Num` int(2) DEFAULT NULL,
   `Nom` varchar(14) DEFAULT NULL,
