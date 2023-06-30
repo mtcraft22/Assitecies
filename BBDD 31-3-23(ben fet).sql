@@ -273,7 +273,6 @@ CREATE TABLE `i3a` (
   `Nom` varchar(17) DEFAULT NULL,
   `Primer_Cognom` varchar(11) DEFAULT NULL,
   `Segon_Cognom` varchar(9) DEFAULT NULL,
-  `09/03/2023` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -392,7 +391,8 @@ CREATE TABLE `usuaris` (
 --
 
 INSERT INTO `usuaris` (`ID`, `USUARI`, `CONTRASENYA`, `TIPUSUSUARI`) VALUES
-(1, 'Marc', '$2y$10$6v.4r6avSxRJoMSiebLCJ..Ww/t61ROzgcBVtnDIyezZorJuqOvDy', 'Administrador');
+(1, 'super', '$2y$10$3MKTzePalI.hFXsIrmX0JeeKodgjy2gvspSGX3OEEu5EEeH1FtF46', 'Administrador');
+
 
 --
 -- Índexs per a les taules bolcades

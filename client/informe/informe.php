@@ -24,8 +24,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-        <link href="../../estils/informe.css" rel="stylesheet">
+        
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <link href="../../estils/informe.css" rel="stylesheet">
         <title>Document</title>
     </head>
     <body>
@@ -83,11 +84,11 @@
                 </p>
                        
              
-         </div>
-         </div>
+            </div>
+        </div>
          
-        <a href="../../servidor/inici/Assistenciesinici.php"><button>Dessa i  Torna al inici </button></a><br>
-        <a href="../../servidor/login/tanca.php"><button >Tancar la sesió</button></a>
+        <a href="../../servidor/inici/Assistenciesinici.php">Dessa i  Torna al inici </a><br>
+        <a href="../../servidor/login/tanca.php">Tancar la sesió</a>
         <script src="informe.js"></script>
     </body>
 </html>
